@@ -26,10 +26,13 @@ pipeline {
                    sh 'mvn compile'      }
             }
         }
-        stage('MVN SONARQUBE') {
-            steps {
-                sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar -Dmaven.test.skip=true';
-            }
+            stage('MVN SONARQUBE') {
+                steps {
+                    script {
+                        // Afficher la date système
+                        sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=admin123 -Dmaven.test.skip=true';
+                   }
+                }
         }
     }
 }
