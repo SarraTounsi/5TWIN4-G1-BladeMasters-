@@ -5,8 +5,10 @@ pipeline {
         stage('Git') {
             steps {
                 // Récupérer le code source depuis le référentiel Git
-                git checkout 'rayenOueslati_5TWIN4_G1' 
-                url :'https://github.com/SarraTounsi/5TWIN4-G1-kadeem'
+                // Checkout the specific branch
+                    git branch: 'rayenOueslati_5TWIN4_G1',
+                        url: 'https://github.com/SarraTounsi/5TWIN4-G1-kadeem'
+        
             }
         }
 
