@@ -1,0 +1,44 @@
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { NotfoundpageComponent } from './components/notfoundpage/notfoundpage.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from "@angular/forms";
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrModule } from "ngx-toastr";
+import { RouterModule } from '@angular/router';
+import { AutocompleteLibModule } from 'angular-ng-autocomplete';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    NotfoundpageComponent
+
+  ],
+  imports: [
+
+    BrowserModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    AppRoutingModule,
+    CommonModule,
+    BrowserAnimationsModule,
+    AutocompleteLibModule,
+    RouterModule,
+    FormsModule,
+    NgbModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut: 3500,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+    }), // ToastrModule added
+
+  ],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
