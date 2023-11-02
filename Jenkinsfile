@@ -32,9 +32,16 @@ pipeline {
         stage('Tests JUnit/Mockito') {
             steps {
                 script {
-                        sh 'mvn test'  // Run Maven tests
+                        sh 'mvn clean test'  // Run Maven tests
                     }
                 }
          }
-    }
+        stage('Nexus') {
+            steps {
+                script {
+                    sh 'mvn deploy'
+                }
+            }
+        }
+     }
 }
