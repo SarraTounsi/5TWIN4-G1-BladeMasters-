@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: tn.esprit.spring.kaddem.UnitTest.services.UniversityServiceImpTest
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 5.434 s <<< FAILURE! - in tn.esprit.spring.kaddem.UnitTest.services.UniversityServiceImpTest
+deleteUniversiteTest  Time elapsed: 0.013 s  <<< ERROR!
+java.util.NoSuchElementException: No value present
+	at tn.esprit.spring.kaddem.UnitTest.services.UniversityServiceImpTest.deleteUniversiteTest(UniversityServiceImpTest.java:70)
+
