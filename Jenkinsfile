@@ -28,7 +28,7 @@ pipeline {
             stage('MVN SONARQUBE') {
                 steps {
                     script {
-                        sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=rayen -Dmaven.test.skip=true';
+                        sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=rayen -Dmaven.test.skip=true -Dsonar.branch.name=rayenOueslati_5TWIN4_G1';
                    }
                 }
         }
