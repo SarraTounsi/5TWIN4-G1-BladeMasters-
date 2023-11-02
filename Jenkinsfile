@@ -34,5 +34,12 @@ pipeline {
                    }
                 }
         }
+           stage('testing') {
+                        steps {
+                            script {
+                                sh 'mvn test';
+                           }
+                        }
+                }
     }
 }

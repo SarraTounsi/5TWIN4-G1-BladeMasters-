@@ -1,5 +1,6 @@
 package tn.esprit.spring.kaddem;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
 import org.junit.jupiter.api.Test;
@@ -9,7 +10,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
 import org.mockito.Mockito;
+import tn.esprit.spring.kaddem.entities.DetailEquipe;
 import tn.esprit.spring.kaddem.entities.Equipe;
 import tn.esprit.spring.kaddem.entities.Niveau;
 import tn.esprit.spring.kaddem.repositories.EquipeRepository;
@@ -25,20 +29,19 @@ public class EquipeTest {
     @Mock
     private EquipeRepository equipeRepository;
 
-    /*@Test
+
+    @Test
     public void addEquipeTest() {
-        //  Long stockId = 0L;
-        Stock stock = new Stock();
-        when(stockRepository.findById(eq(stock.getIdStock()))).thenReturn(Optional.of(stock));
-        Product newProduct = new Product(0L, "new Product", 10, 10, ProductCategory.ELECTRONICS, stock);
-        when(productRepository.save(eq(newProduct))).thenReturn(newProduct);
-        Product result = productService.addProduct(newProduct, stock.getIdStock());
+
+        Equipe newEquipe = new Equipe(1,"Junior Team", Niveau.JUNIOR );
+        when(equipeRepository.save(eq(newEquipe))).thenReturn(newEquipe);
+        Equipe result = equipeService.addEquipe(newEquipe );
         assertThat(result).isNotNull();
         assertThat(result).isNotNull();
-        assertThat(result.getIdProduct()).isNotNull();
-        assertThat(result.getTitle()).isEqualTo("new Product");
-        verify(productRepository, times(1)).save(eq(newProduct));
-    }*/
+        assertThat(result.getIdEquipe()).isNotNull();
+        assertThat(result.getNomEquipe()).isEqualTo("Junior Team");
+        verify(equipeRepository, times(1)).save(eq(newEquipe));
+    }
     @Test
     public void retrieveAllEquipeTest() {
         List<Equipe> equipeList = new ArrayList<>();
@@ -53,6 +56,23 @@ public class EquipeTest {
         assertThat(result.get(1).getIdEquipe()).isEqualTo(2);
         assertThat(result.get(1).getNomEquipe()).isEqualTo("Junior Team");
         verify(equipeRepository, times(1)).findAll();
+    }
+
+    @Test
+    public void deleteProductTest() {
+        Integer equipeIdToDelete = 1;
+        doNothing().when(equipeRepository).deleteById(equipeIdToDelete);
+        equipeService.deleteEquipe(equipeIdToDelete);
+        verify(equipeRepository, times(1)).deleteById(equipeIdToDelete);
+    }
+    @Test
+    public void retrieveProductTest() {
+        Integer equipeIdToRetrieve = 1;
+        Equipe expectedProduct = new Equipe(equipeIdToRetrieve, "Junior Team", Niveau.JUNIOR);
+        when(equipeRepository.findById(equipeIdToRetrieve)).thenReturn(Optional.of(expectedProduct));
+        Equipe result = equipeService.retrieveEquipe(equipeIdToRetrieve);
+        verify(equipeRepository, times(1)).findById(equipeIdToRetrieve);
+        assertEquals(expectedProduct, result);
     }
 
 

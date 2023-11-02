@@ -5,10 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ba2ee145-a4c7-4dc1-b37a-082ed463c4e3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Jenkinsfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/tn/esprit/devops/EquipeTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jenkinsfile" beforeDir="false" afterPath="$PROJECT_DIR$/Jenkinsfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/tn/esprit/spring/kaddem/EquipeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/tn/esprit/spring/kaddem/EquipeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-tn.esprit.spring.kaddem.EquipeTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-tn.esprit.spring.kaddem.EquipeTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/tn.esprit.spring.kaddem.EquipeTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/tn.esprit.spring.kaddem.EquipeTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/tn/esprit/spring/kaddem/EquipeTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/tn/esprit/spring/kaddem/EquipeTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,11 +102,22 @@
       <workItem from="1698178325982" duration="573000" />
       <workItem from="1698484680628" duration="179000" />
       <workItem from="1698920804545" duration="2666000" />
-      <workItem from="1698924997012" duration="4115000" />
+      <workItem from="1698924997012" duration="9024000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
