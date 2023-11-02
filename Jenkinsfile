@@ -15,21 +15,19 @@ pipeline {
         stage('MVN CLEAN') {
             steps {
                 script {
-                    // Afficher la date système
                     sh 'mvn clean'       }
             }
         }
           stage('MVN COMPILE') {
             steps {
                 script {
-                    // Afficher la date système
+
                    sh 'mvn compile'      }
             }
         }
             stage('MVN SONARQUBE') {
                 steps {
                     script {
-                        // Afficher la date système
                         sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=rayen -Dmaven.test.skip=true';
                    }
                 }
@@ -38,8 +36,8 @@ pipeline {
                  steps {
                         script {
                               sh 'mvn test'  // Run Maven tests
-                           }
                         }
+                 }
          }
     }
 }
