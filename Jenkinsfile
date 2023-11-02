@@ -30,7 +30,7 @@ pipeline {
                 steps {
                     script {
                         // Afficher la date système
-                        sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=admin123 -Dmaven.test.skip=true';
+                        sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=rayen -Dmaven.test.skip=true';
                    }
                 }
         }
