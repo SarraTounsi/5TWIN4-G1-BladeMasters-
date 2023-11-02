@@ -12,14 +12,14 @@ pipeline {
             }
         }
 
-        stage('mvn_clean') {
+        stage('MVN CLEAN') {
             steps {
                 script {
                     // Afficher la date système
                     sh 'mvn clean'       }
             }
         }
-          stage('mvn_compile') {
+          stage('MVN COMPILE') {
             steps {
                 script {
                     // Afficher la date système
@@ -34,5 +34,12 @@ pipeline {
                    }
                 }
         }
+           stage('TEST JUNIT MOCKITO') {
+                 steps {
+                        script {
+                              sh 'mvn test'  // Run Maven tests
+                           }
+                        }
+         }
     }
 }
