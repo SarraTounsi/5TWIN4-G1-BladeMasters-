@@ -22,14 +22,14 @@ pipeline {
                    sh 'mvn compile'      }
             }
         }
-         stage('MVN SONARQUBE') {
+         stage('SonarQube Analysis') {
             steps {
                 script {
                     sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=rayen -Dmaven.test.skip=true -Dsonar.branch.name=rayenOueslati_5TWIN4_G1';
                 }
             }
         }
-        stage('TEST JUNIT MOCKITO') {
+        stage('Tests JUnit/Mockito') {
             steps {
                 script {
                         sh 'mvn test'  // Run Maven tests
