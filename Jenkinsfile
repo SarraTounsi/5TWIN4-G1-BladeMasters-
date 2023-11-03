@@ -10,21 +10,19 @@ pipeline {
         
             }
         }
-        //  stage('Start Jenkins and MySQL') {
-        //     steps {
-        //       //  sh "docker network create my-network"
-        //         sh "sudo  docker start mysql"
-        //     }
-        // }
+         stage('Start Jenkins and MySQL') {
+            steps {
+                script {
+                    sh 'mvn clean package -DskipTests'
+                }
+            }
+        }
           stage('Build Docker image') {
             steps {
-                // sh "mvn -version"
-                // sh "mvn clean package -DskipTests"
-                // Make the mvnw script executable
-                sh 'mvn clean package -DskipTests'
-                sh 'sudo docker build -t kadem .'
-                sh'docker run --network springboot-mysql --name springboot-mysql-container -p 8089:8089 kadem'
-
+               script {
+                  sh 'sudo docker build -t kadem .'
+                  sh'docker run --network springboot-mysql --name springboot-mysql-container -p 8089:8089 kadem'
+                }
             }
         }
 
