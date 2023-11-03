@@ -13,7 +13,7 @@ pipeline {
          stage('Start Jenkins and MySQL') {
             steps {
               //  sh "docker network create my-network"
-                sh "sudo -S docker start mysql"
+                sh "sudo -i  docker start mysql"
             }
         }
           stage('Build project') {
