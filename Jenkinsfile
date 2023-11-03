@@ -17,10 +17,10 @@ pipeline {
                 }
             }
         }
-         stage('Start MySQL') {
+         stage('Create & Start MySQL') {
             steps {
-              //  sh "docker network create my-network"
-                sh "sudo docker start mysql"
+               sh "docker run --name mysqldb --network springboot-mysql -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=kadem -d mysql"
+               sh "sudo docker start mysql"
             }
         }
           stage('Build Docker image') {
