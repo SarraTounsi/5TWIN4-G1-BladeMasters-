@@ -17,7 +17,7 @@ pipeline {
                 }
             }
         }
-         stage('Create & Start MySQL') {
+         stage('Start MySQL container') {
             steps {
             //    sh "sudo docker run --name mysqldb --network springboot-mysql -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=kadem -d mysql"
                sh "sudo docker start b092d7e8bda8"
@@ -26,24 +26,17 @@ pipeline {
           stage('Build Docker image') {
             steps {
                script {
-                  sh 'sudo docker build -t kadem .'
-                  sh 'sudo docker run --network springboot-mysql --name springboot-mysql-container -p 8089:8089 kadem'
+                  sh 'sudo docker build -t 5TWIN4-G1-BladeMasters- .'
                 }
             }
         }
-
-        // stage('Build Docker image') {
-        //     steps {
-        //         sh "sudo docker build -t kaddem ."
-        //     }
-        // }
-
-        // stage('Run Docker image in the same network as MySQL') {
-        //     steps {
-        //           sh'docker run --network springboot-mysql --name springboot-mysql-container -p 8089:8089 kadem'
-        //         // sh "sudo docker run -p 8089:8089 kaddem"
-        //     }
-        // }
+        stage('Run a docker image in a docker container in the same network') {
+            steps {
+               script {
+                  sh 'sudo docker run --network springboot-mysql --name springboot-mysql-container -p 8089:8089 5TWIN4-G1-BladeMasters-'
+                }
+            }
+        }
          stage('SonarQube Analysis') {
             steps {
                 script {
