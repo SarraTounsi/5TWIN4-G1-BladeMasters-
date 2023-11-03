@@ -10,16 +10,28 @@ pipeline {
         
             }
         }
-        stage('MVN CLEAN') {
+         stage('Start Jenkins and MySQL') {
             steps {
-                script {
-                    sh 'mvn clean'       }
+              //  sh "docker network create my-network"
+                sh "sudo docker start mysql"
             }
         }
-        stage('MVN COMPILE') {
+          stage('Build project') {
             steps {
-                script {
-                   sh 'mvn compile'      }
+                // sh "mvn -version"
+                sh "mvn clean package -DskipTests"
+            }
+        }
+
+        stage('Build Docker image') {
+            steps {
+                sh "sudo docker build -t kaddem ."
+            }
+        }
+
+        stage('Run Docker image in the same network as MySQL') {
+            steps {
+                sh "sudo docker run -p 8089:8089 kaddem"
             }
         }
          stage('SonarQube Analysis') {
@@ -29,19 +41,32 @@ pipeline {
                 }
             }
         }
-        // stage('Tests JUnit/Mockito') {
-        //     steps {
-        //         script {
-        //                 sh 'mvn clean test'  // Run Maven tests
-        //             }
-        //         }
-        //  }
-        stage('Nexus') {
+        stage('Tests JUnit/Mockito') {
             steps {
                 script {
-                    sh 'mvn deploy'
+                        sh 'mvn clean test'  // Run Maven tests
+                    }
                 }
-            }
-        }
+         }
+        // stage('Nexus') {
+        //     steps {
+        //         script {
+        //             sh 'mvn deploy'
+        //         }
+        //     }
+        // }
+        // stage('MVN CLEAN') {
+        //     steps {
+        //         script {
+        //             sh 'mvn clean'       }
+        //     }
+        // }
+        // stage('MVN COMPILE') {
+        //     steps {
+        //         script {
+        //            sh 'mvn compile'      }
+        //     }
+        // }
+        
      }
 }
