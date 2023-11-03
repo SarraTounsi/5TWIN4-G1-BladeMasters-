@@ -16,25 +16,33 @@ pipeline {
         //         sh "sudo  docker start mysql"
         //     }
         // }
-          stage('Build project') {
+          stage('Build Docker image') {
             steps {
                 // sh "mvn -version"
-                sh "mvn clean package -DskipTests"
+                // sh "mvn clean package -DskipTests"
+                // Make the mvnw script executable
+                sh 'chmod +x mvnw'
+                sh './mvnw clean package -DskipTests'
+
+
+                sh 'sudo docker build -t my-spring-app .'
+                sh'docker run --network springboot-mysql --name springboot-mysql-container -p 8089:8089 kadem'
+
             }
         }
 
-        stage('Build Docker image') {
-            steps {
-                sh "sudo docker build -t kaddem ."
-            }
-        }
+        // stage('Build Docker image') {
+        //     steps {
+        //         sh "sudo docker build -t kaddem ."
+        //     }
+        // }
 
-        stage('Run Docker image in the same network as MySQL') {
-            steps {
-                  sh'docker run --network springboot-mysql --name springboot-mysql-container -p 8089:8089 kadem'
-                // sh "sudo docker run -p 8089:8089 kaddem"
-            }
-        }
+        // stage('Run Docker image in the same network as MySQL') {
+        //     steps {
+        //           sh'docker run --network springboot-mysql --name springboot-mysql-container -p 8089:8089 kadem'
+        //         // sh "sudo docker run -p 8089:8089 kaddem"
+        //     }
+        // }
          stage('SonarQube Analysis') {
             steps {
                 script {
