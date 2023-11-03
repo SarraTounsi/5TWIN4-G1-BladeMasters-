@@ -10,11 +10,17 @@ pipeline {
         
             }
         }
-         stage('Start Jenkins and MySQL') {
+         stage('Build project') {
             steps {
                 script {
                     sh 'mvn clean package -DskipTests'
                 }
+            }
+        }
+         stage('Start Jenkins and MySQL') {
+            steps {
+              //  sh "docker network create my-network"
+                sh "sudo docker start mysql"
             }
         }
           stage('Build Docker image') {
