@@ -22,7 +22,7 @@ pipeline {
                 // sh "mvn clean package -DskipTests"
                 // Make the mvnw script executable
                 sh 'mvn clean package -DskipTests'
-                sh 'sudo docker build -t my-spring-app .'
+                sh 'sudo docker build -t kadem .'
                 sh'docker run --network springboot-mysql --name springboot-mysql-container -p 8089:8089 kadem'
 
             }
