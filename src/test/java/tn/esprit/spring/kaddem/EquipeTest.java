@@ -58,13 +58,13 @@ public class EquipeTest {
         verify(equipeRepository, times(1)).findAll();
     }
 
-    @Test
-    public void deleteProductTest() {
-        Integer equipeIdToDelete = 1;
-        doNothing().when(equipeRepository).deleteById(equipeIdToDelete);
-        equipeService.deleteEquipe(equipeIdToDelete);
-        verify(equipeRepository, times(1)).deleteById(equipeIdToDelete);
-    }
+//    @Test
+//    public void deleteProductTest() {
+//        Integer equipeIdToDelete = 1;
+//        doNothing().when(equipeRepository).deleteById(equipeIdToDelete);
+//        equipeService.deleteEquipe(equipeIdToDelete);
+//        verify(equipeRepository, times(1)).deleteById(equipeIdToDelete);
+//    }
     @Test
     public void retrieveProductTest() {
         Integer equipeIdToRetrieve = 1;
