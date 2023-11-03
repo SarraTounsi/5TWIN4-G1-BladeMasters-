@@ -20,7 +20,7 @@ pipeline {
          stage('Start MySQL container') {
             steps {
             //    sh "sudo docker run --name mysqldb --network springboot-mysql -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=kadem -d mysql"
-               sh "sudo docker start b092d7e8bda8"
+               sh "sudo docker start 356bd8299fa7"
             }
         }
           stage('Build Docker image') {
