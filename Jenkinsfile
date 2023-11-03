@@ -10,12 +10,12 @@ pipeline {
         
             }
         }
-         stage('Start Jenkins and MySQL') {
-            steps {
-              //  sh "docker network create my-network"
-                sh "sudo  docker start mysql"
-            }
-        }
+        //  stage('Start Jenkins and MySQL') {
+        //     steps {
+        //       //  sh "docker network create my-network"
+        //         sh "sudo  docker start mysql"
+        //     }
+        // }
           stage('Build project') {
             steps {
                 // sh "mvn -version"
@@ -31,7 +31,8 @@ pipeline {
 
         stage('Run Docker image in the same network as MySQL') {
             steps {
-                sh "sudo docker run -p 8089:8089 kaddem"
+                  sh'docker run --network springboot-mysql --name springboot-mysql-container -p 8089:8089 kadem'
+                // sh "sudo docker run -p 8089:8089 kaddem"
             }
         }
          stage('SonarQube Analysis') {
