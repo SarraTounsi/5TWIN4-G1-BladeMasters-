@@ -26,14 +26,14 @@ pipeline {
           stage('Build Docker image') {
             steps {
                script {
-                  sh 'sudo docker build -t 5TWIN4-G1-BladeMasters- .'
+                  sh 'sudo docker build -t 5TWIN4-G1-kadeem .'
                 }
             }
         }
         stage('Run a docker image in a docker container in the same network') {
             steps {
                script {
-                  sh 'sudo docker run --network springboot-mysql --name springboot-mysql-container -p 8089:8089 5TWIN4-G1-BladeMasters-'
+                  sh 'sudo docker run --network springboot-mysql --name springboot-mysql-container -p 8089:8089 5TWIN4-G1-kadeem'
                 }
             }
         }
