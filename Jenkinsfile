@@ -40,17 +40,7 @@ pipeline {
                 sh 'sudo docker build -t rayenoueslati-5twin4-g1 .'
             }
         }
-        // stage('Docker Image Push') {
-        //     steps {
-        //         script {
-        //             // sh 'sudo docker login --username "rayen15" --password-stdin'
-        //             sh "docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD"
-        //             sh 'sudo docker tag rayenoueslati-5twin4-g1 rayen15/devops:latest'
-        //             sh 'sudo docker push rayen15/devops:latest'
-        //         }
-        //     }
-        // }
-          stage('Push Docker Image') {
+        stage('Push Docker Image') {
             steps {
                 script {
                     def dockerHubToken = credentials('DOCKERHUB_ACCESS_TOKEN')
@@ -71,8 +61,6 @@ pipeline {
                 sh 'sudo docker compose up -d'
             }
         }
-
-      
     }
     post {
         success {
