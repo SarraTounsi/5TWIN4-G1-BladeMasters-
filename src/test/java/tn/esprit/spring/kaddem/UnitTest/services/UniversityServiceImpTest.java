@@ -5,9 +5,11 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,11 +26,15 @@ import java.util.Optional;
 public class UniversityServiceImpTest {
 
 
-    @MockBean
+    @InjectMocks
     private UniversiteServiceImpl universiteService;
     @Mock
     private UniversiteRepository universiteRepository;
 
+    @BeforeEach
+    void setUp() {
+        MockitoAnnotations.initMocks(this);
+    }
     @Test
     public void addUniversiteTest() {
 
