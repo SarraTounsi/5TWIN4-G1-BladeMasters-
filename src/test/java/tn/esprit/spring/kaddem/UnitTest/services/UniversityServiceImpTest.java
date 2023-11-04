@@ -15,6 +15,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.ContextConfiguration;
 import tn.esprit.spring.kaddem.entities.Universite;
 import tn.esprit.spring.kaddem.repositories.UniversiteRepository;
 import tn.esprit.spring.kaddem.services.UniversiteServiceImpl;
@@ -22,7 +23,7 @@ import tn.esprit.spring.kaddem.services.UniversiteServiceImpl;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-@SpringBootTest
+
 public class UniversityServiceImpTest {
 
 
@@ -82,8 +83,8 @@ public class UniversityServiceImpTest {
     public void retrieveUniversiteTest() {
         Integer UniversiteId = 1;
         Universite expectedUniversite = new Universite(
-                        UniversiteId,
-                        "esprit");
+                UniversiteId,
+                "esprit");
         when(universiteRepository.findById(UniversiteId)).thenReturn(Optional.of(expectedUniversite));
         Universite universiteResult = universiteService.retrieveUniversite(UniversiteId);
         verify(universiteRepository, times(1)).findById(UniversiteId);
