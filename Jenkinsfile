@@ -41,6 +41,24 @@ pipeline {
                            }
                         }
                 }
+        stage('Docker Image') {
+            steps {
+                sh 'sudo docker build -t acilfarhat-5twin4-g1 .'
+            }
+        }  
+        stage('dockerhub') {
+            steps {
+
+                                      sh "docker login -u acilfarhat0909 -p acil28500"
+                                      sh "docker tag acilfarhat-5twin4-g1 acilfarhat0909/acilfarhat-5twin4-g1"
+                                      sh "docker push  acilfarhat0909/acilfarhat-5twin4-g1:v1"
+                                           }
+                     }  
+        stage('Docker Compose') {
+            steps {
+                sh 'docker compose up -d'
+            }
+        }    
 
     }
 }
