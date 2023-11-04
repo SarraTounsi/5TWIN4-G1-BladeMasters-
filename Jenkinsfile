@@ -10,13 +10,13 @@ pipeline {
         
             }
         }
-         stage('Build project') {
-            steps {
-                script {
-                    sh 'mvn clean package -DskipTests'
-                }
-            }
-        }
+        //  stage('Build project') {
+        //     steps {
+        //         script {
+        //             sh 'mvn clean package -DskipTests'
+        //         }
+        //     }
+        // }
          stage('Run docker compose') {
             steps {
             //    sh "sudo docker run --name mysqldb --network springboot-mysql -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=kadem -d mysql"
