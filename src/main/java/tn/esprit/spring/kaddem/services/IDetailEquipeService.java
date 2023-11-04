@@ -4,7 +4,7 @@ import java.util.List;
 
 import tn.esprit.spring.kaddem.entities.DetailEquipe;
 
-public interface IDepartementService {
+public interface IDetailEquipeService {
 	List<DetailEquipe> retrieveAllDetailEquipes();
 	DetailEquipe addDetailEquipe(DetailEquipe e);
 	DetailEquipe updateDetailEquipe(DetailEquipe e);
