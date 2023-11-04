@@ -25,7 +25,7 @@ pipeline {
          stage('Docker Image') {
             steps {
                 sh 'sudo docker build -t rayenoueslati-5twin4-g1 .'
-                sh 'sudo docker run --network springboot-mysql --name springboot-mysql-container -p 8089:8089 rayenoueslati-5twin4-g1'
+                sh 'sudo docker run --network springboot-mysql-net --name springboot-mysql-container -p 8089:8089 rayenoueslati-5twin4-g1'
 
             }
         }
