@@ -10,23 +10,10 @@ pipeline {
         
             }
         }
-        //  stage('Build project') {
-        //     steps {
-        //         script {
-        //             sh 'mvn clean package -DskipTests'
-        //         }
-        //     }
-        // }
-        //  stage('Run docker compose') {
-        //     steps {
-        //     //    sh "sudo docker run --name mysqldb --network springboot-mysql -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=kadem -d mysql"
-        //        sh "sudo docker compose up"
-        //     }
-        // }
-         stage('SonarQube Analysis') {
+         stage('Build project') {
             steps {
                 script {
-                    sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=rayen -Dmaven.test.skip=true';
+                    sh 'mvn clean package -DskipTests'
                 }
             }
         }
@@ -40,6 +27,13 @@ pipeline {
                 sh 'docker build -t rayenoueslati-5twin4-g1 .'
                 sh'docker run --network springboot-mysql --name springboot-mysql-container -p 8089:8089 rayenoueslati-5twin4-g1'
 
+            }
+        }
+        stage('SonarQube Analysis') {
+            steps {
+                script {
+                    sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=rayen -Dmaven.test.skip=true';
+                }
             }
         }
         stage('Tests JUnit/Mockito') {
