@@ -35,6 +35,13 @@ pipeline {
                 sh "sudo docker start 01cf03972b41"
             }
         }
+         stage('Docker Image') {
+            steps {
+                sh 'docker build -t rayenoueslati-5twin4-g1 .'
+                sh'docker run --network springboot-mysql --name springboot-mysql-container -p 8089:8089 rayenoueslati-5twin4-g1'
+
+            }
+        }
         stage('Tests JUnit/Mockito') {
             steps {
                 script {
@@ -47,11 +54,7 @@ pipeline {
                 sh 'mvn deploy -Dmaven.test.skip=true'
             }
         }
-        stage('Docker Image') {
-            steps {
-                sh 'docker build -t rayenoueslati-5twin4-g1 .'
-            }
-        }
+       
         // stage('Nexus') {
         //     steps {
         //         script {
