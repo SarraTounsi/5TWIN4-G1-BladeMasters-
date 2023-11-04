@@ -7,7 +7,7 @@ pipeline {
                 // Récupérer le code source depuis le référentiel Git
                 // Checkout the specific branch
                     git branch: 'AcilFarhat-5TWIN4-G1',
-                        url: 'https://github.com/SarraTounsi/5TWIN4-G1-kadeem'
+                    url: 'https://github.com/SarraTounsi/5TWIN4-G1-kadeem'
 
             }
         }
@@ -19,14 +19,14 @@ pipeline {
                     sh 'mvn clean'       }
             }
         }
-          stage('mvn_compile') {
+        stage('mvn_compile') {
             steps {
                 script {
                     // Afficher la date système
                    sh 'mvn compile'      }
             }
         }
-            stage('MVN SONARQUBE') {
+        stage('MVN SONARQUBE') {
                 steps {
                     script {
                         // Afficher la date système
@@ -34,12 +34,33 @@ pipeline {
                    }
                 }
         }
-           stage('testing') {
+        stage('testing') {
                         steps {
                             script {
                                 sh 'mvn test';
                            }
                         }
                 }
+        stage('MVN DEPLOY TO NEXUS') {
+                     steps {
+                         sh 'mvn deploy -Dmaven.test.skip=true'
+                     }
+                 }
+        stage('Docker Image') {
+                     steps {
+                         sh 'docker build -t acilfarhat-5twin4-g3 .'
+                     }
+                 }
+        stage('Docker Image Push') {
+                     steps {
+
+                     }
+                 }
+        stage('Docker Compose') {
+                     steps {
+                         sh 'docker compose up -d'
+                     }
+                 }
     }
 }
+

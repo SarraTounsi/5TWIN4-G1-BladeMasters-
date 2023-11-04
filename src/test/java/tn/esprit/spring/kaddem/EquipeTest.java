@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Optional;
 
 import org.mockito.Mockito;
-import tn.esprit.spring.kaddem.entities.DetailEquipe;
 import tn.esprit.spring.kaddem.entities.Equipe;
 import tn.esprit.spring.kaddem.entities.Niveau;
 import tn.esprit.spring.kaddem.repositories.EquipeRepository;

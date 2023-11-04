@@ -70,3 +70,8 @@ Esrc/main/java/tn/esprit/spring/kaddem/services/EquipeServiceImpl.java,7\3\7313
 kaddem.iml,f\a\fadfa917dfce73921c82c554eb63a32a28afe834
 e
 5src/test/java/tn/esprit/spring/kaddem/EquipeTest.java,c\f\cf512eafe82796862e79f9218d4ffa37a20b86d3
+:
+
+Dockerfile,6\6\6651ddff6eb82c840ced7c1dddee15c6e1913dd4
+B
+docker-compose.yml,3\5\35b8c13cf2eb2a194eada000eb310d65aed53b2a
