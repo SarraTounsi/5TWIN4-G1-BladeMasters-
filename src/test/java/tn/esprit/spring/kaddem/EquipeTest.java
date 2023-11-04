@@ -6,7 +6,8 @@ import static org.mockito.Mockito.*;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.junit.jupiter.api.BeforeEach;
+import org.mockito.MockitoAnnotations;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +20,7 @@ import tn.esprit.spring.kaddem.repositories.EquipeRepository;
 import tn.esprit.spring.kaddem.services.EquipeServiceImpl;
 
 
-@SpringBootTest
+
 public class EquipeTest {
 
     @InjectMocks
@@ -28,7 +29,10 @@ public class EquipeTest {
     @Mock
     private EquipeRepository equipeRepository;
 
-
+    @BeforeEach
+    void setUp() {
+        MockitoAnnotations.initMocks(this);
+    }
     @Test
     public void addEquipeTest() {
 

@@ -30,7 +30,7 @@ pipeline {
                 steps {
                     script {
                         // Afficher la date système
-                        sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar -Dmaven.test.skip=true';
+                        sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar ;
                    }
                 }
         }
@@ -41,26 +41,7 @@ pipeline {
                            }
                         }
                 }
-        stage('MVN DEPLOY TO NEXUS') {
-                     steps {
-                         sh 'mvn deploy -Dmaven.test.skip=true'
-                     }
-                 }
-        stage('Docker Image') {
-                     steps {
-                         sh 'docker build -t acilfarhat-5twin4-g3 .'
-                     }
-                 }
-        stage('Docker Image Push') {
-                     steps {
 
-                     }
-                 }
-        stage('Docker Compose') {
-                     steps {
-                         sh 'docker compose up -d'
-                     }
-                 }
     }
 }
 
