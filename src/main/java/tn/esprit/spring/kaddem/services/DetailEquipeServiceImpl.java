@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 
 import tn.esprit.spring.kaddem.entities.DetailEquipe;
 import tn.esprit.spring.kaddem.repositories.DetailEquipeRepository;
+import tn.esprit.spring.kaddem.services.IDetailEquipeService;
 
 @Slf4j
 @AllArgsConstructor
