@@ -14,21 +14,21 @@ services:
     networks:
       springboot-mysql-net:
 
-  kadem:
-    container_name: kadem_container
-    build:
-      context: ./
-      dockerfile: Dockerfile
-    environment:
-      - spring.datasource.url=jdbc:mysql://mysqldb:3306/kadem?autoReconnect=true&useSSL=false
-      - spring.datasource.username=root
-      - spring.datasource.password=root
-    ports:
-      - "8089:8089"
-    image: kadem
-    depends_on:
-      - mysqldb
-    networks:
-      springboot-mysql-net:
-    restart: on-failure
+  # kadem:
+  #   container_name: kadem_container
+  #   build:
+  #     context: ./
+  #     dockerfile: Dockerfile
+  #   environment:
+  #     - spring.datasource.url=jdbc:mysql://mysqldb:3306/kadem?autoReconnect=true&useSSL=false
+  #     - spring.datasource.username=root
+  #     - spring.datasource.password=root
+  #   ports:
+  #     - "8089:8089"
+  #   image: kadem
+  #   depends_on:
+  #     - mysqldb
+  #   networks:
+  #     springboot-mysql-net:
+  #   restart: on-failure
 
