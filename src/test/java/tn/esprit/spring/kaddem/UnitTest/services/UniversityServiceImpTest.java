@@ -12,6 +12,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import tn.esprit.spring.kaddem.entities.Universite;
 import tn.esprit.spring.kaddem.repositories.UniversiteRepository;
 import tn.esprit.spring.kaddem.services.UniversiteServiceImpl;
@@ -23,7 +24,7 @@ import java.util.Optional;
 public class UniversityServiceImpTest {
 
 
-    @InjectMocks
+    @MockBean
     private UniversiteServiceImpl universiteService;
     @Mock
     private UniversiteRepository universiteRepository;
