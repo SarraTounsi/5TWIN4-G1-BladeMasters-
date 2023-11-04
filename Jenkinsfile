@@ -10,44 +10,87 @@ pipeline {
         
             }
         }
-         stage('Build project') {
+         stage('MVN CLEAN') {
             steps {
-                script {
-                    sh 'mvn clean package -DskipTests'
-                }
+                sh 'mvn clean'
             }
         }
-        stage('Start MySQL') {
+        stage('MVN COMPILE') {
             steps {
-                sh "sudo docker start 01cf03972b41"
+                sh 'mvn compile'
             }
         }
-         stage('Docker Image') {
+        stage('MVN SONARQUBE') {
             steps {
-                sh 'sudo docker build -t rayenoueslati-5twin4-g1 .'
-                sh 'sudo docker run --network springboot-mysql-net --name springboot-mysql-container -p 8089:8089 rayenoueslati-5twin4-g1'
-
+                sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=rayen -Dmaven.test.skip=true'
             }
         }
-        stage('SonarQube Analysis') {
+        stage('MVN TEST JUNIT') {
             steps {
-                script {
-                    sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=rayen -Dmaven.test.skip=true';
-                }
+                sh 'mvn test'
             }
         }
-        stage('Tests JUnit/Mockito') {
-            steps {
-                script {
-                        sh 'mvn test'  // Run Maven tests
-                    }
-                }
-         }
         stage('MVN DEPLOY TO NEXUS') {
             steps {
                 sh 'mvn deploy -Dmaven.test.skip=true'
             }
         }
+         stage('Docker Image') {
+            steps {
+                sh 'docker build -t rayenoueslati-5twin4-g1 .'
+            }
+        }
+        stage('Docker Image Push') {
+            steps {
+                script {
+                    sh 'echo "rayen15" | docker login --username "rayen15" --password-stdin'
+                    sh 'docker tag rayenoueslati-5twin4-g1 rayen15/devops:latest'
+                    sh 'docker push rayen15/devops:latest'
+                }
+            }
+        }
+         stage('Docker Compose') {
+            steps {
+                sh 'docker compose up -d'
+            }
+        }
+        //  stage('Build project') {
+        //     steps {
+        //         script {
+        //             sh 'mvn clean package -DskipTests'
+        //         }
+        //     }
+        // }
+        // stage('Start MySQL') {
+        //     steps {
+        //         sh "sudo docker start 01cf03972b41"
+        //     }
+        // }
+        //  stage('Docker Image') {
+        //     steps {
+        //         sh 'sudo docker build -t rayenoueslati-5twin4-g1 .'
+        //         sh 'sudo docker run --network springboot-mysql-net --name springboot-mysql-container -d -p 8089:8089 rayenoueslati-5twin4-g1'
+        //     }
+        // }
+        // stage('SonarQube Analysis') {
+        //     steps {
+        //         script {
+        //             sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=rayen -Dmaven.test.skip=true';
+        //         }
+        //     }
+        // }
+        // stage('Tests JUnit/Mockito') {
+        //     steps {
+        //         script {
+        //                 sh 'mvn test'  // Run Maven tests
+        //             }
+        //         }
+        //  }
+        // stage('MVN DEPLOY TO NEXUS') {
+        //     steps {
+        //         sh 'mvn deploy -Dmaven.test.skip=true'
+        //     }
+        // }
        
         // stage('Nexus') {
         //     steps {
