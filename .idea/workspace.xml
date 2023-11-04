@@ -6,10 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="ba2ee145-a4c7-4dc1-b37a-082ed463c4e3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/tn/esprit/spring/kaddem/EquipeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/tn/esprit/spring/kaddem/EquipeTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-tn.esprit.spring.kaddem.EquipeTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-tn.esprit.spring.kaddem.EquipeTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/tn.esprit.spring.kaddem.EquipeTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/tn.esprit.spring.kaddem.EquipeTest.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/tn/esprit/spring/kaddem/EquipeTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/tn/esprit/spring/kaddem/EquipeTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +98,7 @@
       <workItem from="1698957905537" duration="1248000" />
       <workItem from="1699051293338" duration="1311000" />
       <workItem from="1699094147662" duration="6246000" />
-      <workItem from="1699123913711" duration="2803000" />
+      <workItem from="1699123913711" duration="3888000" />
     </task>
     <servers />
   </component>
