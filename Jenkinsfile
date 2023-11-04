@@ -10,19 +10,14 @@ pipeline {
         
             }
         }
-         stage('MVN CLEAN') {
+         stage('Build with Maven') {
             steps {
-                sh 'mvn clean'
+                sh 'mvn clean compile'
             }
         }
-        stage('MVN COMPILE') {
+        stage('SonarQube Analysis') {
             steps {
-                sh 'mvn compile'
-            }
-        }
-        stage('MVN SONARQUBE') {
-            steps {
-                sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=rayen -Dmaven.test.skip=true'
+                sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=rayen '
             }
         }
         stage('MVN TEST JUNIT') {
@@ -113,4 +108,12 @@ pipeline {
         // }
         
      }
+    post {
+        success {
+            echo 'Build successful'
+        }
+        failure {
+            echo 'fail'
+        }
+    }
 }
