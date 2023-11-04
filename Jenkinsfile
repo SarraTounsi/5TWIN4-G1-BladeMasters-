@@ -17,24 +17,10 @@ pipeline {
                 }
             }
         }
-         stage('Start MySQL container') {
+         stage('Run docker compose') {
             steps {
             //    sh "sudo docker run --name mysqldb --network springboot-mysql -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=kadem -d mysql"
-               sh "sudo docker start 356bd8299fa7"
-            }
-        }
-          stage('Build Docker image') {
-            steps {
-               script {
-                  sh 'sudo docker build -t kadeem .'
-                }
-            }
-        }
-        stage('Run a docker image in a docker container in the same network') {
-            steps {
-               script {
-                  sh 'sudo docker run --network springboot-mysql --name springboot-mysql-container -p 8089:8089 kadeem'
-                }
+               sh "sudo docker compose up"
             }
         }
          stage('SonarQube Analysis') {
