@@ -37,15 +37,15 @@ pipeline {
         // }
          stage('Docker Image') {
             steps {
-                sh 'docker build -t rayenoueslati-5twin4-g1 .'
+                sh 'sudo docker build -t rayenoueslati-5twin4-g1 .'
             }
         }
         stage('Docker Image Push') {
             steps {
                 script {
-                    sh 'echo "rayen15" | docker login --username "rayen15" --password-stdin'
-                    sh 'docker tag rayenoueslati-5twin4-g1 rayen15/devops:latest'
-                    sh 'docker push rayen15/devops:latest'
+                    sh 'sudo docker login --username "rayen15" --password-stdin'
+                    sh 'sudo docker tag rayenoueslati-5twin4-g1 rayen15/devops:latest'
+                    sh 'sudo docker push rayen15/devops:latest'
                 }
             }
         }
