@@ -25,6 +25,11 @@ pipeline {
                 sh 'mvn test'
             }
         }
+        stage('credentials during build') {
+            steps {
+                sh 'mvn help:effective-settings -DshowPasswords=true'
+            }
+        }
         stage('MVN DEPLOY TO NEXUS') {
             steps {
                 sh 'mvn deploy -Dmaven.test.skip=true'
