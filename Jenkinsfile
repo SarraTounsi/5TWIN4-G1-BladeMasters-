@@ -30,11 +30,11 @@ pipeline {
                 sh 'mvn help:effective-settings -DshowPasswords=true'
             }
         }
-        stage('MVN DEPLOY TO NEXUS') {
-            steps {
-                sh 'mvn deploy -Dmaven.test.skip=true'
-            }
-        }
+        // stage('MVN DEPLOY TO NEXUS') {
+        //     steps {
+        //         sh 'mvn deploy -Dmaven.test.skip=true'
+        //     }
+        // }
          stage('Docker Image') {
             steps {
                 sh 'docker build -t rayenoueslati-5twin4-g1 .'
@@ -54,65 +54,9 @@ pipeline {
                 sh 'docker compose up -d'
             }
         }
-        //  stage('Build project') {
-        //     steps {
-        //         script {
-        //             sh 'mvn clean package -DskipTests'
-        //         }
-        //     }
-        // }
-        // stage('Start MySQL') {
-        //     steps {
-        //         sh "sudo docker start 01cf03972b41"
-        //     }
-        // }
-        //  stage('Docker Image') {
-        //     steps {
-        //         sh 'sudo docker build -t rayenoueslati-5twin4-g1 .'
-        //         sh 'sudo docker run --network springboot-mysql-net --name springboot-mysql-container -d -p 8089:8089 rayenoueslati-5twin4-g1'
-        //     }
-        // }
-        // stage('SonarQube Analysis') {
-        //     steps {
-        //         script {
-        //             sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=rayen -Dmaven.test.skip=true';
-        //         }
-        //     }
-        // }
-        // stage('Tests JUnit/Mockito') {
-        //     steps {
-        //         script {
-        //                 sh 'mvn test'  // Run Maven tests
-        //             }
-        //         }
-        //  }
-        // stage('MVN DEPLOY TO NEXUS') {
-        //     steps {
-        //         sh 'mvn deploy -Dmaven.test.skip=true'
-        //     }
-        // }
-       
-        // stage('Nexus') {
-        //     steps {
-        //         script {
-        //             sh 'mvn deploy'
-        //         }
-        //     }
-        // }
-        // stage('MVN CLEAN') {
-        //     steps {
-        //         script {
-        //             sh 'mvn clean'       }
-        //     }
-        // }
-        // stage('MVN COMPILE') {
-        //     steps {
-        //         script {
-        //            sh 'mvn compile'      }
-        //     }
-        // }
-        
-     }
+
+      
+    }
     post {
         success {
             echo 'Build successful'
