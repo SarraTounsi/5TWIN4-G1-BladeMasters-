@@ -22,6 +22,14 @@ pipeline {
                   sh 'mvn compile'      }
            }
         }
+         stage('SonarQube Analysis') {
+            steps {
+                script {
+                    sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar -Dmaven.test.skip=true';
+                }
+            }
+        }
+
 
      }
 }
