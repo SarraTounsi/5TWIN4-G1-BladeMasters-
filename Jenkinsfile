@@ -30,6 +30,11 @@ pipeline {
                 }
             }
         }
+        stage('Start MySQL') {
+            steps {
+                sh "sudo docker start 01cf03972b41"
+            }
+        }
         stage('Tests JUnit/Mockito') {
             steps {
                 script {
