@@ -30,11 +30,11 @@ pipeline {
                 sh 'mvn help:effective-settings -DshowPasswords=true'
             }
         }
-        // stage('MVN DEPLOY TO NEXUS') {
-        //     steps {
-        //         sh 'mvn deploy -Dmaven.test.skip=true'
-        //     }
-        // }
+        stage('MVN DEPLOY TO NEXUS') {
+            steps {
+                sh 'mvn deploy -Dmaven.test.skip=true'
+            }
+        }
          stage('Docker Image') {
             steps {
                 sh 'sudo docker build -t rayenoueslati-5twin4-g1 .'
@@ -51,8 +51,8 @@ pipeline {
                     }
 
                     // Push the image to Docker Hub
-                    sh 'sudo docker tag rayenoueslati-5twin4-g1 rayen15/devops:latest'
-                    sh 'sudo docker push rayen15/devops:latest'
+                    sh 'sudo docker tag rayenoueslati-5twin4-g1 rayen15/devops:v1'
+                    sh 'sudo docker push rayen15/devops:v1'
                 }
             }
         }
