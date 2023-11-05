@@ -49,7 +49,7 @@ pipeline {
         stage('dockerhub') {
             steps {
 
-                 sh 'sudo docker login --username "acilfarhat0909" --password-stdin "acil28500"'
+                 sh 'sudo docker login --username "acilfarhat0909" --password-stdin'
                  sh "sudo docker tag acilfarhat-5twin4-g1 acilfarhat0909/acilfarhat-5twin4-g1:v1"
                  sh "sudo docker push  acilfarhat0909/acilfarhat-5twin4-g1:v1"
                  }
