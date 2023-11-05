@@ -41,6 +41,23 @@ pipeline {
                 sh 'mvn deploy -Dmaven.test.skip=true'
             }
         }
+           stage('Docker Image') {
+            steps {
+                sh 'sudo docker build -t nourmakdouli-5twin4-g1 .'
+            }
+        }
+        // stage('Push Docker Image') {
+        //     steps {
+        //           sh "sudo docker login -u <username> -p <password>"
+        //          sh "sudo docker tag nourmakdouli-5twin4-g1 <username>/nourmakdouli-5twin4-g1:<tag>"
+        //          sh "sudo docker push  <username>/nourmakdouli-5twin4-g1:<tag>"
+        //     }
+        // }
+         stage('Docker Compose') {
+            steps {
+                sh 'sudo docker compose up -d'
+            }
+        }
 
 
      }
