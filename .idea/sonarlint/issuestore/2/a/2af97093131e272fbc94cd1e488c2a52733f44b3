@@ -1,4 +1,12 @@
 
+c
+java:S22598"FA "NullPointerException" could be thrown; "etudiant" is nullable here.(À÷Òˆ8äÜ©‡º1
+a
+java:S2259?"?A "NullPointerException" could be thrown; "c" is nullable here.(ÄëÖ’øÿÿÿÿ8æÜ©‡º1
+b
+java:S2259@"@A "NullPointerException" could be thrown; "eq" is nullable here.(“³›üûÿÿÿÿ8æÜ©‡º1
+Y
+java:S3655-"7Call "Optional#isPresent()" before accessing the value.(Ö²Ð”ýÿÿÿÿ8çÜ©‡º1
 X
 java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞ
 X
@@ -7,3 +15,5 @@ X
 java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞ
 X
 java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞ
+L
+java:S1128"*Remove this unused import 'java.util.Set'.(ö²„¤þÿÿÿÿ8ÈÝ©‡º1
