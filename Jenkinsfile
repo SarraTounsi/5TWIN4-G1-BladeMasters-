@@ -29,13 +29,18 @@ pipeline {
                 }
             }
         }
-                stage('Tests JUnit/Mockito') {
-                    steps {
-                        script {
-                                sh 'mvn clean test'  // Run Maven tests
-                            }
-                        }
-                 }
+        stage('Tests JUnit/Mockito') {
+            steps {
+                script {
+                    sh 'mvn clean test'  // Run Maven tests
+                    }
+            }
+        }
+         stage('MVN DEPLOY TO NEXUS') {
+            steps {
+                sh 'mvn deploy -Dmaven.test.skip=true'
+            }
+        }
 
 
      }
