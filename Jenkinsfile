@@ -44,13 +44,13 @@ pipeline {
                 sh 'sudo docker build -t nourmakdouli-5twin4-g1 .'
             }
         }
-        // stage('Push Docker Image') {
-        //     steps {
-        //           sh "sudo docker login -u <username> -p <password>"
-        //          sh "sudo docker tag nourmakdouli-5twin4-g1 <username>/nourmakdouli-5twin4-g1:<tag>"
-        //          sh "sudo docker push  <username>/nourmakdouli-5twin4-g1:<tag>"
-        //     }
-        // }
+        stage('Push Docker Image') {
+            steps {
+                  sh "sudo docker login -u nourmakdouli -p 92755192nour"
+                 sh "sudo docker tag nourmakdouli-5twin4-g1 nourmakdouli/nourmakdouli-5twin4-g1:v1"
+                 sh "sudo docker push  nourmakdouli/nourmakdouli-5twin4-g1:v2"
+            }
+        }
          stage('Docker Compose') {
             steps {
                 sh 'sudo docker compose up -d'
