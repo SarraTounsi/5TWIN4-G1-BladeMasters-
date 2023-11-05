@@ -5,7 +5,7 @@ networks:
 
 services:
 
-  mariadb:
+  mydb:
     container_name: mariadb
     image: "mariadb:latest"
     restart: unless-stopped
@@ -13,22 +13,21 @@ services:
       - 3306:3306
     environment:
       - MARIADB_ROOT_PASSWORD=root
-      - MARIADB_DATABASE=kaddem_nour
+      - MARIADB_DATABASE=kaddem
     networks:
       - mynetwork
 
-  kadem:
-    container_name: kadem_container
+  kadem_nour:
+    container_name: kadem_nour_container
     build: ./
-    image: kadem
     restart: unless-stopped
     environment:
-      - spring.datasource.url=jdbc:mysql://mariadb:3306/kaddem?autoReconnect=true&useSSL=false
+      - spring.datasource.url=jdbc:mysql://mydb:3306/kaddem?autoReconnect=true&useSSL=false
       - spring.datasource.username=root
       - spring.datasource.password=root
     ports:
       - "8089:8089"
     depends_on:
-      - mariadb
+      - mydb
     networks:
       - mynetwork
