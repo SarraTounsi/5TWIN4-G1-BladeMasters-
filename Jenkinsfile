@@ -49,17 +49,26 @@ pipeline {
         stage('dockerhub') {
             steps {
 
-                 sh 'echo "acilfarhat0909" | docker login --username "acilfarhat0909" --password-stdin'
-                 sh "docker tag acilfarhat-5twin4-g1 acilfarhat0909/acilfarhat-5twin4-g1:v1"
-                 sh "docker push  acilfarhat0909/acilfarhat-5twin4-g1:v1"
+                 sh 'echo "acilfarhat0909" | sudo docker login --username "acilfarhat0909" --password-stdin'
+                 sh "sudo docker tag acilfarhat-5twin4-g1 acilfarhat0909/acilfarhat-5twin4-g1:v1"
+                 sh "sudo docker push  acilfarhat0909/acilfarhat-5twin4-g1:v1"
                  }
                      }  
         stage('Docker Compose') {
             steps {
-                sh 'docker compose up -d'
+                sh 'sudo docker compose up -d'
             }
-        }    
+        }   
+         
 
+    }
+    post {
+        success {
+            echo 'Build successful'
+        }
+        failure {
+            echo 'fail'
+        }
     }
 }
 
