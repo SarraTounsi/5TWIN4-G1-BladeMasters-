@@ -47,7 +47,7 @@ pipeline {
         stage('Push Docker Image') {
             steps {
                   sh "sudo docker login -u nourmakdouli -p 92755192nour"
-                 sh "sudo docker tag nourmakdouli-5twin4-g1 nourmakdouli/nourmakdouli-5twin4-g1:v1"
+                 sh "sudo docker tag nourmakdouli-5twin4-g1 nourmakdouli/nourmakdouli-5twin4-g1:v2"
                  sh "sudo docker push  nourmakdouli/nourmakdouli-5twin4-g1:v2"
             }
         }
