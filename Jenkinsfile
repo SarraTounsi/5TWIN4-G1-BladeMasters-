@@ -50,8 +50,8 @@ pipeline {
             steps {
 
                  sh "sudo docker login -u acilfarhat0909 -p acil28500"
-                 sh "sudo docker tag acilfarhat-5twin4-g1 acilfarhat0909/acilfarhat-5twin4-g1:v1"
-                 sh "sudo docker push  acilfarhat0909/acilfarhat-5twin4-g1:v1"
+                 sh "sudo docker tag acilfarhat-5twin4-g1 acilfarhat0909/acilfarhat-5twin4-g1:v2"
+                 sh "sudo docker push  acilfarhat0909/acilfarhat-5twin4-g1:v2"
                  }
                      }  
         stage('Docker Compose') {

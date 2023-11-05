@@ -1,4 +1,8 @@
 version: "3"
+
+networks:
+  springboot-mysql-net:
+
 services:
   mysqldb:
     container_name: mysqldb
