@@ -1,13 +1,11 @@
 pipeline {
-    agent any // use any agent
+    agent any 
 
     stages {
         stage('Git') {
             steps {
-                //get source code from branch
                     git branch: 'MakdouliNour_twin_G1',
                         url: 'https://github.com/SarraTounsi/5TWIN4-G1-kadeem'
-
             }
         }
          stage('MVN CLEAN') {
@@ -25,18 +23,18 @@ pipeline {
          stage('SonarQube Analysis') {
             steps {
                 script {
-                    sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar -Dmaven.test.skip=true';
+                    sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar';
                 }
             }
         }
-        stage('Tests JUnit/Mockito') {
+        stage('Unit tests') {
             steps {
                 script {
-                    sh 'mvn clean test'  // Run Maven tests
+                    sh 'mvn clean test'  
                     }
             }
         }
-         stage('MVN DEPLOY TO NEXUS') {
+         stage('Deployment TO NEXUS') {
             steps {
                 sh 'mvn deploy -Dmaven.test.skip=true'
             }
