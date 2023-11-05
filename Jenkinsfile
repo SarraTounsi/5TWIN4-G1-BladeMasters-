@@ -49,10 +49,10 @@ pipeline {
         stage('dockerhub') {
             steps {
 
-                                      sh "docker login -u acilfarhat0909 -p acil28500"
-                                      sh "docker tag acilfarhat-5twin4-g1 acilfarhat0909/acilfarhat-5twin4-g1"
-                                      sh "docker push  acilfarhat0909/acilfarhat-5twin4-g1:v1"
-                                           }
+                 sh 'echo "acil28500" | docker login --username "acilfarhat0909" --password-stdin'
+                 sh "docker tag acilfarhat-5twin4-g1 acilfarhat0909/acilfarhat-5twin4-g1"
+                 sh "docker push  acilfarhat0909/acilfarhat-5twin4-g1:v1"
+                 }
                      }  
         stage('Docker Compose') {
             steps {
