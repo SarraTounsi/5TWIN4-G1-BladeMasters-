@@ -37,5 +37,10 @@ pipeline {
                             }
                     }
                 }
+            stage('Deployment TO NEXUS') {
+                            steps {
+                                sh 'mvn deploy -Dmaven.test.skip=true'
+                            }
+                        }
     }
 }
