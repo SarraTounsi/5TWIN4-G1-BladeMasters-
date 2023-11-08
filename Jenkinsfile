@@ -30,7 +30,7 @@ pipeline {
                    }
                 }
         }
-        stage('Unit tests') {
+        stage('JUnit tests') {
                     steps {
                         script {
                             sh 'mvn clean test'
