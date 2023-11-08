@@ -3,7 +3,6 @@ package tn.esprit.spring.kaddem.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
 import lombok.extern.slf4j.Slf4j;
 import tn.esprit.spring.kaddem.entities.Contrat;
 import tn.esprit.spring.kaddem.entities.Etudiant;
@@ -14,8 +13,6 @@ import tn.esprit.spring.kaddem.repositories.EtudiantRepository;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 @Slf4j
 @Service
@@ -67,8 +64,6 @@ ContratRepository contratRepository;
 	public 	Integer nbContratsValides(Date startDate, Date endDate){
 		return contratRepository.getnbContratsValides(startDate, endDate);
 	}
-	
-	private static final Logger logger = LoggerFactory.getLogger(ContratServiceImpl.class);
 
 	public void retrieveAndUpdateStatusContrat(){
 		List<Contrat>contrats=contratRepository.findAll();
@@ -79,9 +74,9 @@ ContratRepository contratRepository;
 			if (contrat.getArchive()==false) {
 				long difference_In_Time = dateSysteme.getTime() - contrat.getDateFinContrat().getTime();
 				long difference_In_Days = (difference_In_Time / (1000 * 60 * 60 * 24)) % 365;
-					if (difference_In_Days == 15) {
-		                contrats15j.add(contrat);
-		                logger.info(" Contrat : " + contrat);
+				if (difference_In_Days==15){
+					contrats15j.add(contrat);
+					log.info(" Contrat : " + contrat);
 				}
 				if (difference_In_Days==0) {
 					contratsAarchiver.add(contrat);
