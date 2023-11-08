@@ -30,5 +30,12 @@ pipeline {
                    }
                 }
         }
+        stage('Unit tests') {
+                    steps {
+                        script {
+                            sh 'mvn clean test'
+                            }
+                    }
+                }
     }
 }
