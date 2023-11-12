@@ -47,17 +47,22 @@ pipeline {
                  sh 'docker build -t sarratounsi-5twin4-g1 .'
                     }
                 }
-            stage('Push Docker Image') {
-    steps {
-        script {
-            withCredentials([string(credentialsId: 'DOCKERHUB_TOKEN', variable: 'DOCKERHUB_TOKEN')]) {
-                sh "docker login -u sarratounsi -p $DOCKERHUB_TOKEN"
-                sh "docker tag sarratounsi-5twin4-g1 sarratounsi/sarratounsi-5twin4-g1:v2"
-                sh "docker push sarratounsi/sarratounsi-5twin4-g1:v2"
+              stage('Push Docker Image') {
+            steps {
+                script {
+                    def dockerHubToken = credentials('DOCKERHUB_TOKEN')
+
+                    // Log in to Docker Hub using the token
+                    withCredentials([string(credentialsId: 'DOCKERHUB_TOKEN', variable: 'DOCKERHUB_TOKEN')]) {
+                        sh "sudo docker login -u sarratounsi -p $DOCKERHUB_TOKEN"
+                    }
+
+                    // Push the image to Docker Hub
+                    sh 'sudo docker tag sarratounsi-5twin4-g1 sarratounsi/devops:v1'
+                    sh 'sudo docker push sarratounsi/devops:v1'
+                }
             }
         }
-    }
-}
 
             stage('Docker Compose') {
                   steps {
