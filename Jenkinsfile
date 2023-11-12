@@ -41,6 +41,11 @@ pipeline {
                            }
                         }
                 }
+        stage('MVN DEPLOY TO NEXUS') {
+            steps {
+                sh 'mvn deploy -Dmaven.test.skip=true'
+            }
+        }
         stage('Docker Image') {
             steps {
                 sh 'sudo docker build -t acilfarhat-5twin4-g1 .'
