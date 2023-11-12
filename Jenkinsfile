@@ -60,6 +60,7 @@ pipeline {
                          sh "sudo docker push  sarratounsi/sarratounsi-5twin4-g1:v2"
                                     }
                                 }
+                     }
             stage('Docker Compose') {
                   steps {
                     sh 'sudo docker compose up -d'
