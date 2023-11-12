@@ -49,7 +49,13 @@ pipeline {
                    }
             stage('Push Docker Image') {
                      steps {
-                         sh "sudo docker login -u sarratounsi -p sarra123!"
+                script {
+                    def dockerHubToken = credentials('DOCKERHUB_TOKEN')
+
+                    // Log in to Docker Hub using the token
+                    withCredentials([string(credentialsId: 'DOCKERHUB_TOKEN', variable: 'DOCKERHUB_TOKEN')]) {
+                        sh "sudo docker login -u sarratounsi -p $DOCKERHUB_TOKEN"
+                    }
                          sh "sudo docker tag sarratounsi-5twin4-g1 sarratounsi/sarratounsi-5twin4-g1:v2"
                          sh "sudo docker push  sarratounsi/sarratounsi-5twin4-g1:v2"
                                     }
