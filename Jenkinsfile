@@ -42,5 +42,23 @@ pipeline {
                                 sh 'mvn deploy -Dmaven.test.skip=true'
                             }
                         }
+            stage('Docker Image') {
+                             steps {
+                                 sh 'sudo docker build -t sarratounsi-5twin4-g1 .'
+                                 }
+                   }
+            stage('Push Docker Image') {
+                     steps {
+                         sh "sudo docker login -u sarratounsi -p sarra123!"
+                         sh "sudo docker tag sarratounsi-5twin4-g1 sarratounsi/sarratounsi-5twin4-g1:v2"
+                         sh "sudo docker push  sarratounsi/sarratounsi-5twin4-g1:v2"
+                                    }
+                                }
+            stage('Docker Compose') {
+                  steps {
+                    sh 'sudo docker compose up -d'
+                             }
+                   }
+
     }
 }
