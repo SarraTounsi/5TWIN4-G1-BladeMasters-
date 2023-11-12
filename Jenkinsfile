@@ -42,11 +42,6 @@ pipeline {
                                 sh 'mvn deploy -Dmaven.test.skip=true'
                             }
                         }
-            stage('Docker Image') {
-                             steps {
-                                 sh 'sudo docker build -t sarratounsi-5twin4-g1 .'
-                                 }
-                   }
             stage('Push Docker Image') {
                      steps {
                 script {
@@ -61,6 +56,11 @@ pipeline {
                                     }
                                 }
                      }
+                     stage('Docker Image') {
+                                                  steps {
+                                                      sh 'sudo docker build -t sarratounsi-5twin4-g1 .'
+                                                      }
+                                        }
             stage('Docker Compose') {
                   steps {
                     sh 'sudo docker compose up -d'
