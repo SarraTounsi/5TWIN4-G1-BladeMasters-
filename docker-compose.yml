@@ -6,8 +6,8 @@ networks:
 services:
 
   mydb:
-    container_name: mariadb
-    image: "mariadb:latest"
+    container_name:  maiadb-docker-container
+    image: "mariadb"
     restart: unless-stopped
     ports:
       - 3306:3306
