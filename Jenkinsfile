@@ -46,8 +46,8 @@ pipeline {
                     }
 
                     // Push the image to Docker Hub
-                    sh 'sudo docker tag rayenoueslati-5twin4-g1 rayen15/devops:v1'
-                    sh 'sudo docker push rayen15/devops:v1'
+                    sh 'sudo docker tag rayenoueslati-5twin4-g1 rayen15/devops:v2'
+                    sh 'sudo docker push rayen15/devops:v2'
                 }
             }
         }
