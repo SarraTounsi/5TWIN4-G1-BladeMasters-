@@ -14,12 +14,10 @@ import java.util.List;
 import java.util.Optional;
 
 import org.mockito.Mockito;
-import org.springframework.boot.test.context.SpringBootTest;
 import tn.esprit.spring.kaddem.entities.Etudiant;
 import tn.esprit.spring.kaddem.entities.Option;
 import tn.esprit.spring.kaddem.repositories.EtudiantRepository;
 import tn.esprit.spring.kaddem.services.EtudiantServiceImpl;
-@SpringBootTest
  class EtudiantServiceImplTest {
 
     @InjectMocks
