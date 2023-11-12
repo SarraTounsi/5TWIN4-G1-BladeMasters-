@@ -44,7 +44,7 @@ pipeline {
                         }
          stage('Docker Image') {
             steps {
-                 sh 'sudo docker build -t sarratounsi-5twin4-g1 .'
+                 sh 'docker build -t sarratounsi-5twin4-g1 .'
                     }
                 }
             stage('Push Docker Image') {
@@ -61,7 +61,7 @@ pipeline {
 
             stage('Docker Compose') {
                   steps {
-                    sh 'sudo docker compose up -d'
+                    sh 'docker compose up -d'
                              }
                    }
 
