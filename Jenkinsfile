@@ -47,6 +47,7 @@ pipeline {
                  sh 'docker build -t sarratounsi-5twin4-g1 .'
                     }
                 }
+                /*
               stage('Push Docker Image') {
             steps {
                 script {
@@ -63,7 +64,14 @@ pipeline {
                 }
             }
         }
-
+*/
+  stage('Push Docker Image') {
+            steps {
+                  sh "sudo docker login -u sarratounsi -p 92755192nour"
+                 sh "sudo docker tag sarratounsi-5twin4-g1 sarratounsi/sarratounsi-5twin4-g1:v2"
+                 sh "sudo docker push  sarratounsi/sarratounsi-5twin4-g1:v2"
+            }
+        }
             stage('Docker Compose') {
                   steps {
                     sh 'docker compose up -d'
