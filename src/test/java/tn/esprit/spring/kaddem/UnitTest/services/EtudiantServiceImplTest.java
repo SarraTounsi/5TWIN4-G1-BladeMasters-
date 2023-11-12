@@ -14,12 +14,13 @@ import java.util.List;
 import java.util.Optional;
 
 import org.mockito.Mockito;
+import org.springframework.boot.test.context.SpringBootTest;
 import tn.esprit.spring.kaddem.entities.Etudiant;
 import tn.esprit.spring.kaddem.entities.Option;
 import tn.esprit.spring.kaddem.repositories.EtudiantRepository;
 import tn.esprit.spring.kaddem.services.EtudiantServiceImpl;
-
-public class EtudiantServiceImplTest {
+@SpringBootTest
+ class EtudiantServiceImplTest {
 
     @InjectMocks
     private EtudiantServiceImpl etudiantService;
@@ -32,20 +33,20 @@ public class EtudiantServiceImplTest {
         MockitoAnnotations.initMocks(this);
     }
     @Test
-    public void ajouterEtudiantTest(){
+     void ajouterEtudiantTest(){
         Etudiant newEtudiant=new Etudiant(1,"Makdouli","Nour", Option.SIM);
-        when(etudiantRepository.save(eq(newEtudiant))).thenReturn(newEtudiant);
+        when(etudiantRepository.save(newEtudiant)).thenReturn(newEtudiant);
         Etudiant result =etudiantService.addEtudiant(newEtudiant);
         assertThat(result).isNotNull();
         assertThat(result).isNotNull();
         assertThat(result.getIdEtudiant()).isNotNull();
         assertThat(result.getNomE()).isEqualTo("Makdouli");
-        verify(etudiantRepository,times(1)).save(eq(newEtudiant));
+        verify(etudiantRepository,times(1)).save(newEtudiant);
 
     }
 
     @Test
-    public void getAllstudentsTest(){
+     void getAllstudentsTest(){
         List <Etudiant> etudiantList = new ArrayList<>();
         etudiantList.add(new  Etudiant(1,"Makdouli","Nour", Option.SIM));
         etudiantList.add(new  Etudiant(2,"Ouni","Yoldez", Option.GAMIX));
@@ -63,7 +64,8 @@ public class EtudiantServiceImplTest {
     }
 
     @Test
-    public void getStudentTest(){
+
+     void getStudentTest(){
         Integer etudiantIdToRetrieve = 1;
        Etudiant expectedEtudiant = new Etudiant(etudiantIdToRetrieve,"Makdouli","Nour", Option.SIM);
         when(etudiantRepository.findById(etudiantIdToRetrieve)).thenReturn(Optional.of(expectedEtudiant));

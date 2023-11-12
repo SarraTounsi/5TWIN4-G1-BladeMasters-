@@ -27,13 +27,33 @@ pipeline {
                 }
             }
         }
-        stage('Unit tests') {
+  stage('Unit Tests')
+                      {
+                          steps
+                          {
+                              sh 'mvn clean test'
+                          }
+                          post {
+                                 always {
+                                      junit '**/target/surefire-reports/TEST-*.xml'
+                                 }
+                          }
+                      }
+
+        stage('Mockito Tests') {
             steps {
-                script {
-                    sh 'mvn clean test'  
-                    }
+                sh 'mvn clean test -Pmockito-tests'
+            }
+            post {
+                always {
+                    junit(
+                        allowEmptyResults: true,
+                        testResults: 'target/surefire-reports/**/*.xml'
+                    )
+                }
             }
         }
+
          stage('Deployment TO NEXUS') {
             steps {
                 sh 'mvn deploy -Dmaven.test.skip=true'
