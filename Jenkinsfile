@@ -1,6 +1,9 @@
 pipeline {
     agent any // use any agent
-
+   environment {
+        DOCKER_IMAGE_NAME = 'rayenoueslati-5twin4-g1-kadem'
+        DOCKER_IMAGE_TAG = 'latest'
+    }
     stages {
         stage('Git') {
             steps {
@@ -37,7 +40,7 @@ pipeline {
         }
          stage('Docker Image') {
             steps {
-                sh 'sudo docker build -t rayenoueslati-5twin4-g1 .'
+                sh "sudo docker build -t $DOCKER_IMAGE_NAME ."
             }
         }
         stage('Push Docker Image') {
@@ -51,8 +54,8 @@ pipeline {
                     }
 
                     // Push the image to Docker Hub
-                    sh 'sudo docker tag rayenoueslati-5twin4-g1 rayen15/devops:v2'
-                    sh 'sudo docker push rayen15/devops:v2'
+                    sh "sudo docker tag $DOCKER_IMAGE_NAME rayen15/devops:$DOCKER_IMAGE_TAG"
+                    sh "sudo docker push rayen15/devops:$DOCKER_IMAGE_TAG"
                 }
             }
         }
