@@ -12,14 +12,14 @@ services:
   mariadb:
     container_name: mariadb
     image: "mariadb:latest"
-    # restart: unless-stopped
+    restart: unless-stopped
     ports:
       - 3306:3306
     environment:
       - MARIADB_ROOT_PASSWORD=root
       - MARIADB_DATABASE=kaddem
-    # networks:
-    #   - springboot-mysql-net
+    networks:
+      - springboot-mysql-net
   
   # mysql-exporter:
   #   image: quay.io/prometheus/mysqld-exporter
@@ -58,9 +58,9 @@ services:
       - spring.datasource.username=root
       - spring.datasource.password=root
     ports:
-      - "8089:8089"
+      - 8089:8089
     image: kadem
     depends_on:
       - mariadb
-    # networks:
-    #   - springboot-mysql-net
+    networks:
+      - springboot-mysql-net
