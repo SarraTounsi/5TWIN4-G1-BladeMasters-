@@ -1,34 +1,66 @@
 version: "3.8"
 
+#--------------------------------------------------------Networks--------------------------------------------------------#
+
 networks:
   springboot-mysql-net:
 
 services:
 
+#--------------------------------------------------------Database--------------------------------------------------------#
+
   mariadb:
     container_name: mariadb
     image: "mariadb:latest"
-    restart: unless-stopped
+    # restart: unless-stopped
     ports:
       - 3306:3306
     environment:
       - MARIADB_ROOT_PASSWORD=root
       - MARIADB_DATABASE=kaddem
-    networks:
-      - springboot-mysql-net
+    # networks:
+    #   - springboot-mysql-net
+  
+  # mysql-exporter:
+  #   image: quay.io/prometheus/mysqld-exporter
+  #   container_name: mysql-exporter
+  #   restart: unless-stopped
+  #   ports:
+  #     - 9104:9104
+  #   command:
+  #     - "--mysqld.username=root:root"
+  #     - "--mysqld.address=mariadb:3306"
+  #   environment:
+  #     - DATA_SOURCE_NAME='root:root@tcp(mariadb:3306)/kaddem'
+  #     - collect.info_schema.tablestats=true
+  #     - collect.info_schema.userstats=true
+  #     - collect.info_schema.query_response_time=true
+  #     - collect.auto_increment.columns=true
+  #     - collect.binlog_size=true
+  #     - collect.perf_schema.eventsstatements=true
+  #     - collect.perf_schema.eventswaits=true
+  #     - collect.perf_schema.file_events=true
+  #     - collect.perf_schema.indexiowaits=true
+  #     - collect.perf_schema.tableiowaits=true
+  #     - collect.perf_schema.tablelocks=true
+  #   depends_on:
+  #     - mariadb
+
+
+#--------------------------------------------------------Application--------------------------------------------------------#
 
   kadem:
     container_name: kadem_container
     build: ./
-    image: kadem
-    restart: unless-stopped
+    # restart: unless-stopped
     environment:
       - spring.datasource.url=jdbc:mysql://mariadb:3306/kaddem?autoReconnect=true&useSSL=false
       - spring.datasource.username=root
       - spring.datasource.password=root
     ports:
       - "8089:8089"
+    image: kadem
     depends_on:
       - mariadb
-    networks:
-      - springboot-mysql-net
+    # networks:
+    #   - springboot-mysql-net
