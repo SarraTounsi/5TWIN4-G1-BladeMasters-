@@ -2,7 +2,7 @@ pipeline {
     agent any // Utilisez n'importe quel agent Jenkins disponible
 
     stages {
-        stage('Git') {
+        stage('fetch Git') {
             steps {
                 // Récupérer le code source depuis le référentiel Git
                 // Checkout the specific branch
