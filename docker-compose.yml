@@ -59,7 +59,7 @@ services:
       - spring.datasource.password=root
     ports:
       - 8089:8089
-    image: rayenoueslati-5twin4-g1
+    image: rayenoueslati-5twin4-g1-kadem
     depends_on:
       - mariadb
     networks:
