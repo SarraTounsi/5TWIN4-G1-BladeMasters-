@@ -15,14 +15,19 @@ pipeline {
                 sh 'mvn clean compile'
             }
         }
-        stage('SonarQube Analysis') {
-            steps {
-                sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=rayen '
-            }
-        }
         stage('MVN TEST JUNIT') {
             steps {
                 sh 'mvn test'
+            }
+        }
+        stage('Jacoco Coverage Report') {
+            steps {
+                sh 'mvn jacoco:report'
+            }
+        }
+        stage('SonarQube Analysis') {
+            steps {
+                sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=rayen '
             }
         }
         stage('MVN DEPLOY TO NEXUS') {
