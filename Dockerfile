@@ -1,7 +1,4 @@
-FROM maven:3.8.2-jdk-8
-
-WORKDIR /kaddem
-COPY . .
-RUN mvn clean install
-
-CMD mvn spring-boot:run
+FROM openjdk:11
+EXPOSE 8089:8089
+ADD target/kaddem-0.0.1-SNAPSHOT.jar kaddem-0.0.1.jar
+ENTRYPOINT ["java", "-jar","kaddem-0.0.1.jar"]
