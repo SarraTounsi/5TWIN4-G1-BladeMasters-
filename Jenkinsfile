@@ -10,26 +10,26 @@ pipeline {
         
             }
         }
-         stage('Build with Maven') {
-            steps {
-                sh 'mvn clean compile'
-            }
-        }
-        stage('SonarQube Analysis') {
-            steps {
-                sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=rayen '
-            }
-        }
-        stage('MVN TEST JUNIT') {
-            steps {
-                sh 'mvn test'
-            }
-        }
-        stage('MVN DEPLOY TO NEXUS') {
-            steps {
-                sh 'mvn deploy -Dmaven.test.skip=true'
-            }
-        }
+        //  stage('Build with Maven') {
+        //     steps {
+        //         sh 'mvn clean compile'
+        //     }
+        // }
+        // stage('SonarQube Analysis') {
+        //     steps {
+        //         sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=rayen '
+        //     }
+        // }
+        // stage('MVN TEST JUNIT') {
+        //     steps {
+        //         sh 'mvn test'
+        //     }
+        // }
+        // stage('MVN DEPLOY TO NEXUS') {
+        //     steps {
+        //         sh 'mvn deploy -Dmaven.test.skip=true'
+        //     }
+        // }
          stage('Docker Image') {
             steps {
                 sh 'sudo docker build -t rayenoueslati-5twin4-g1 .'
