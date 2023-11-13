@@ -10,47 +10,47 @@ pipeline {
         
             }
         }
-        //  stage('Build with Maven') {
-        //     steps {
-        //         sh 'mvn clean compile'
-        //     }
-        // }
-        // stage('SonarQube Analysis') {
-        //     steps {
-        //         sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=rayen '
-        //     }
-        // }
-        // stage('MVN TEST JUNIT') {
-        //     steps {
-        //         sh 'mvn test'
-        //     }
-        // }
-        // stage('MVN DEPLOY TO NEXUS') {
-        //     steps {
-        //         sh 'mvn deploy -Dmaven.test.skip=true'
-        //     }
-        // }
+         stage('Build with Maven') {
+            steps {
+                sh 'mvn clean compile'
+            }
+        }
+        stage('SonarQube Analysis') {
+            steps {
+                sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=rayen '
+            }
+        }
+        stage('MVN TEST JUNIT') {
+            steps {
+                sh 'mvn test'
+            }
+        }
+        stage('MVN DEPLOY TO NEXUS') {
+            steps {
+                sh 'mvn deploy -Dmaven.test.skip=true'
+            }
+        }
          stage('Docker Image') {
             steps {
                 sh 'sudo docker build -t rayenoueslati-5twin4-g1 .'
             }
         }
-        // stage('Push Docker Image') {
-        //     steps {
-        //         script {
-        //             def dockerHubToken = credentials('DOCKERHUB_ACCESS_TOKEN')
+        stage('Push Docker Image') {
+            steps {
+                script {
+                    def dockerHubToken = credentials('DOCKERHUB_ACCESS_TOKEN')
 
-        //             // Log in to Docker Hub using the token
-        //             withCredentials([string(credentialsId: 'DOCKERHUB_ACCESS_TOKEN', variable: 'DOCKERHUB_TOKEN')]) {
-        //                 sh "sudo docker login -u rayen15 -p $DOCKERHUB_TOKEN"
-        //             }
+                    // Log in to Docker Hub using the token
+                    withCredentials([string(credentialsId: 'DOCKERHUB_ACCESS_TOKEN', variable: 'DOCKERHUB_TOKEN')]) {
+                        sh "sudo docker login -u rayen15 -p $DOCKERHUB_TOKEN"
+                    }
 
-        //             // Push the image to Docker Hub
-        //             sh 'sudo docker tag rayenoueslati-5twin4-g1 rayen15/devops:v2'
-        //             sh 'sudo docker push rayen15/devops:v2'
-        //         }
-        //     }
-        // }
+                    // Push the image to Docker Hub
+                    sh 'sudo docker tag rayenoueslati-5twin4-g1 rayen15/devops:v2'
+                    sh 'sudo docker push rayen15/devops:v2'
+                }
+            }
+        }
          stage('Docker Compose') {
             steps {
                 sh 'sudo docker compose up -d'
