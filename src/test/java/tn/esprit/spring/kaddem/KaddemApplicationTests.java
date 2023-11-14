@@ -58,8 +58,14 @@ public class KaddemApplicationTests {
 
     @Test
     void testDeleteDepartement() {
-        departementRepository.deleteById(1);
-        verify(departementRepository).deleteById(1);
+        Departement departement = new Departement();
+        departement.setIdDepart(1);
+        departement.setNomDepart("Nom");
+        when(departementRepository.save(any())).thenReturn(departement);
+        departementService.addDepartement(departement);
+        when(departementRepository.findById(any())).thenReturn(Optional.of(departement));
+        departementService.deleteDepartement(1);
+        verify(departementRepository).delete(departement);
     }
     @Test
     void testUpdateDepartement() {
