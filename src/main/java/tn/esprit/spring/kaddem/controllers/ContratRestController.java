@@ -17,32 +17,32 @@ import java.util.List;
 @RequestMapping("/contrat")
 public class ContratRestController {
 	IContratService contratService;
-	// http://localhost:8089/Kaddem/contrat/retrieve-all-contrats
+	// http://localhost:8089/kaddem/contrat/retrieve-all-contrats
 	@GetMapping("/retrieve-all-contrats")
 	public List<Contrat> getContrats() {
 		List<Contrat> listContrats = contratService.retrieveAllContrats();
 		return listContrats;
 	}
-	// http://localhost:8089/Kaddem/contrat/retrieve-contrat/8
+	// http://localhost:8089/kaddem/contrat/retrieve-contrat/8
 	@GetMapping("/retrieve-contrat/{contrat-id}")
 	public Contrat retrieveContrat(@PathVariable("contrat-id") Integer contratId) {
 		return contratService.retrieveContrat(contratId);
 	}
 
-	// http://localhost:8089/Kaddem/econtrat/add-contrat
+	// http://localhost:8089/kaddem/econtrat/add-contrat
 	@PostMapping("/add-contrat")
 	public Contrat addContrat(@RequestBody Contrat c) {
 		Contrat contrat = contratService.addContrat(c);
 		return contrat;
 	}
 
-	// http://localhost:8089/Kaddem/contrat/remove-contrat/1
+	// http://localhost:8089/kaddem/contrat/remove-contrat/1
 	@DeleteMapping("/remove-contrat/{contrat-id}")
 	public void removeContrat(@PathVariable("contrat-id") Integer contratId) {
 		contratService.removeContrat(contratId);
 	}
 
-	// http://localhost:8089/Kaddem/contrat/update-contrat
+	// http://localhost:8089/kaddem/contrat/update-contrat
 	@PutMapping("/update-contrat")
 	public Contrat updateContrat(@RequestBody Contrat c) {
 		Contrat contrat= contratService.updateContrat(c);
