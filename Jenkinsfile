@@ -23,11 +23,19 @@ pipeline {
                 sh 'mvn test'
             }
         }
-        stage('Jacoco Coverage Report') {
-            steps {
-                sh 'mvn jacoco:report'
-            }
-        }
+       stage('Jacoco Coverage Report) {
+               steps {
+                     sh 'mvn clean test -Pmockito-tests'
+                  }
+                    post {
+                        always {
+                            junit(
+                                allowEmptyResults: true,
+                                testResults: 'target/surefire-reports/TEST-*.xml'
+                            )
+                        }
+                    }
+          }
         stage('SonarQube Analysis') {
             steps {
                 sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=rayen '
