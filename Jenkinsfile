@@ -77,6 +77,15 @@ pipeline {
                     sh 'docker compose up -d'
                              }
                    }
+                   stage('Run grafana & prometheus') {
+                               steps {
+                                   sh 'sudo docker start prometheus'
+                                   sh 'sudo docker start grafana'
+                                   echo 'Running grafana on http://192.168.33.10:3000/'
+                               }
+                           }
+                       }
+
 
     }
 }
