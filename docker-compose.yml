@@ -15,7 +15,7 @@ services:
   app:
     depends_on:
       - mysqldb
-    build: ./devopsProject
+    build: ./
     restart: on-failure
 
     ports:
