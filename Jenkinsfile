@@ -40,7 +40,7 @@ pipeline {
                     )
                 }
             }
-        }$
+        }
         stage('Generate JaCoCo Report') {
             steps {
                 script {
