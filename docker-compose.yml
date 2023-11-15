@@ -8,7 +8,8 @@ services:
   mariadb:
     container_name: mariadb
     image: "mariadb:latest"
-    restart: unless-stoppeds
+    restart: unless-stopped
+    ports:
       - 3306:3306
     environment:
       - MARIADB_ROOT_PASSWORD=root
