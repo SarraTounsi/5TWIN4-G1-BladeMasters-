@@ -74,4 +74,13 @@ pipeline {
 
 
      }
+
+         post {
+        success {
+            echo 'Build successful'
+        }
+        failure {
+            echo 'fail'
+        }
+    }
 }
