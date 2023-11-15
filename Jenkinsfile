@@ -37,6 +37,20 @@ pipeline {
                             }
                     }
                 }
+                        stage('Mockito Tests') {
+                            steps {
+                                sh 'mvn clean test -Pmockito-tests'
+                            }
+                            post {
+                                always {
+                                    junit(
+                                        allowEmptyResults: true,
+                                        testResults: 'target/surefire-reports/**/*.xml'
+                                    )
+                                }
+                            }
+                        }
+
             stage('Deploy TO NEXUS') {
                             steps {
                                 sh 'mvn deploy -Dmaven.test.skip=true'
@@ -84,7 +98,7 @@ pipeline {
                                    echo 'Running grafana on http://192.168.33.10:3000/'
                                }
                            }
-                       }
+
 
 
     }
