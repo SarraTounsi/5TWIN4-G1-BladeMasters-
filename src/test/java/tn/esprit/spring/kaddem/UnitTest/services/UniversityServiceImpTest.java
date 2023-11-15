@@ -36,19 +36,20 @@ public class UniversityServiceImpTest {
     void setUp() {
         MockitoAnnotations.initMocks(this);
     }
+
     @Test
     public void addUniversiteTest() {
 
         Universite universite = new Universite();
-        when(universiteRepository.findById(eq(universite.getIdUniv()))).thenReturn(Optional.of(universite));
+        when(universiteRepository.findById((universite.getIdUniv()))).thenReturn(Optional.of(universite));
         Universite newUniver = new Universite(1,"esprit");
-        when(universiteRepository.save(eq(newUniver))).thenReturn(newUniver);
+        when(universiteRepository.save((newUniver))).thenReturn(newUniver);
         Universite result = universiteService.addUniversite(newUniver);
         assertThat(result).isNotNull();
         assertThat(result).isNotNull();
         assertThat(result.getIdUniv()).isNotNull();
         assertThat(result.getNomUniv()).isEqualTo("esprit");
-        verify(universiteRepository, times(1)).save(eq(newUniver));
+        verify(universiteRepository, times(1)).save((newUniver));
     }
 
     @Test
@@ -67,18 +68,6 @@ public class UniversityServiceImpTest {
         verify(universiteRepository, times(1)).findAll();
     }
 
-//    @Test
-//    public void deleteUniversiteTest() {
-////        Integer UniversiteId = 1;
-//        Universite expectedUniversite = new Universite(
-//                1,
-//                "esprit");
-//        doNothing().when(universiteRepository).deleteById(expectedUniversite.getIdUniv());
-//        System.out.println("ddd"+expectedUniversite.getIdUniv());
-//        universiteService.deleteUniversite(expectedUniversite.getIdUniv());
-//        verify(universiteRepository, times(1)).deleteById(expectedUniversite.getIdUniv());
-//    }
-
     @Test
     public void retrieveUniversiteTest() {
         Integer UniversiteId = 1;
@@ -89,5 +78,27 @@ public class UniversityServiceImpTest {
         Universite universiteResult = universiteService.retrieveUniversite(UniversiteId);
         verify(universiteRepository, times(1)).findById(UniversiteId);
         assertEquals(expectedUniversite, universiteResult);
+    }
+    @Test
+    public void deleteUniversiteTest() {
+        int UniversiteId = 6;
+        Universite uni = new Universite(UniversiteId, "esprit");
+        when(universiteRepository.findById(UniversiteId)).thenReturn(Optional.of(uni));
+        universiteService.deleteUniversite(UniversiteId);
+        verify(universiteRepository, times(1)).delete(uni);
+    }
+    @Test
+    void UpdateUniversiteTest() {
+        Universite UniversiteToUpdate = new Universite();
+        UniversiteToUpdate.setIdUniv(1);
+        UniversiteToUpdate.setNomUniv("esprit");
+
+        when(universiteRepository.findById(UniversiteToUpdate.getIdUniv())).thenReturn(Optional.of(UniversiteToUpdate));
+        when(universiteRepository.save(UniversiteToUpdate)).thenReturn(UniversiteToUpdate);
+
+        Universite updatedOperateur = universiteService.updateUniversite(UniversiteToUpdate);
+
+        assertNotNull(updatedOperateur);
+        assertEquals("esprit", updatedOperateur.getNomUniv());
     }
 }

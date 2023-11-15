@@ -28,7 +28,7 @@ public class UniversiteServiceImpl implements IUniversiteService{
     }
 
  public    Universite updateUniversite (Universite  u){
-<span class="nc" id="L31">     return  (universiteRepository.save(u));</span>
+<span class="fc" id="L31">     return  (universiteRepository.save(u));</span>
     }
 
   public Universite retrieveUniversite (Integer idUniversite){
@@ -36,8 +36,8 @@ public class UniversiteServiceImpl implements IUniversiteService{
 <span class="fc" id="L36">return  u;</span>
     }
     public  void deleteUniversite(Integer idUniversite){
-<span class="nc" id="L39">        universiteRepository.delete(retrieveUniversite(idUniversite));</span>
-<span class="nc" id="L40">    }</span>
+<span class="fc" id="L39">        universiteRepository.delete(retrieveUniversite(idUniversite));</span>
+<span class="fc" id="L40">    }</span>
 
     public void assignUniversiteToDepartement(Integer idUniversite, Integer idDepartement){
 <span class="nc" id="L43">        Universite u= universiteRepository.findById(idUniversite).orElse(null);</span>
