@@ -5,7 +5,7 @@ pipeline {
         DOCKER_IMAGE_TAG = 'latest'
     }
     stages {
-        stage('Git') {
+        stage('Fetch source code') {
             steps {
                 //get source code from branch
                     git branch: 'rayenOueslati_5TWIN4_G1',
@@ -18,7 +18,7 @@ pipeline {
                 sh 'mvn clean compile'
             }
         }
-        stage('MVN TEST JUNIT') {
+        stage('Unit Tests') {
             steps {
                 sh 'mvn test'
             }
@@ -41,7 +41,7 @@ pipeline {
                 sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=rayen '
             }
         }
-        stage('MVN DEPLOY TO NEXUS') {
+        stage('DEPLOY TO NEXUS') {
             steps {
                 sh 'mvn deploy -Dmaven.test.skip=true'
             }
