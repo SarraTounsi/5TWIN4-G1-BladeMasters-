@@ -23,7 +23,7 @@ pipeline {
                 sh 'mvn test'
             }
         }
-       stage('Jacoco Coverage Report) {
+       stage('Jacoco Coverage Report') {
                steps {
                      sh 'mvn clean test -Pmockito-tests'
                   }
