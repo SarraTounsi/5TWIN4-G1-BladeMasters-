@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ba2ee145-a4c7-4dc1-b37a-082ed463c4e3" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/5/35b8c13cf2eb2a194eada000eb310d65aed53b2a" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/5/35b8c13cf2eb2a194eada000eb310d65aed53b2a" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-tn.esprit.spring.kaddem.EquipeTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-tn.esprit.spring.kaddem.EquipeTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/tn.esprit.spring.kaddem.EquipeTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/tn.esprit.spring.kaddem.EquipeTest.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,9 +68,9 @@
   </component>
   <component name="RunAnythingCache">
     <option name="myCommands">
-      <command value="mvn test" />
       <command value="mvn surefire:test" />
       <command value="mvn clean install" />
+      <command value="mvn test" />
     </option>
   </component>
   <component name="RunManager">
@@ -103,6 +104,7 @@
       <workItem from="1699123913711" duration="3888000" />
       <workItem from="1699132970951" duration="700000" />
       <workItem from="1699879751983" duration="1038000" />
+      <workItem from="1699883761144" duration="487000" />
     </task>
     <servers />
   </component>
