@@ -27,24 +27,28 @@ pipeline {
                 }
             }
         }
-  stage('Unit Tests')
-                      {
-                          steps
-                          {
-                              sh 'mvn clean test'
-                          }
-                      }
-
         stage('Mockito Tests') {
             steps {
-                sh 'mvn clean test -Pmockito-tests'
+                sh 'mvn clean test '
             }
             post {
                 always {
                     junit(
                         allowEmptyResults: true,
-                        testResults: 'target/surefire-reports/**/*.xml'
+                        testResults: 
+                        junit '**/target/surefire-reports/TEST-*.xml'
                     )
+                }
+            }
+        }$
+        stage('Generate JaCoCo Report') {
+            steps {
+                script {
+                    // Maven JaCoCo report
+                    sh 'mvn jacoco:report'
+                    
+                    // Optionally, you can archive the generated report
+                    archiveArtifacts artifacts: 'target/site/jacoco/index.html', allowEmptyArchive: true
                 }
             }
         }
@@ -62,13 +66,13 @@ pipeline {
         stage('Push Docker Image') {
             steps {
                   sh "sudo docker login -u nourmakdouli -p 92755192nour"
-                 sh "sudo docker tag nourmakdouli-5twin4-g1 nourmakdouli/nourmakdouli-5twin4-g1:v2"
-                 sh "sudo docker push  nourmakdouli/nourmakdouli-5twin4-g1:v2"
+                 sh "sudo docker tag nourmakdouli-5twin4-g1 nourmakdouli/nourmakdouli-5twin4-g1:latest"
+                 sh "sudo docker push  nourmakdouli/nourmakdouli-5twin4-g1:latest"
             }
         }
          stage('Docker Compose') {
             steps {
-                sh 'sudo docker compose up -d'
+                sh 'sudo docker compose up -d --remove-orphans'
             }
         }
 
@@ -78,9 +82,37 @@ pipeline {
          post {
         success {
             echo 'Build successful'
+              always {
+            // Optionally, you can publish the JaCoCo report as an artifact
+            publishHTML([allowMissing: false, alwaysLinkToLastBuild: true, keepAll: true, reportDir: 'target/site/jacoco', reportFiles: 'index.html', reportName: 'JaCoCo Code Coverage'])
+        }
         }
         failure {
             echo 'fail'
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+  //stage('Unit Tests')    Nour add profile to pom.xml if you want to use this
+                    // {
+                       //   steps
+                        //  {
+                    //          sh 'mvn clean test -Pmockito-tests'
+                      //    }
+                //                post {
+                //                 always {
+                //                      junit 'target/surefire-reports/**/*.xml'
+                //               }
+                //      }
+                 //     }
