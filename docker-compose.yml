@@ -32,7 +32,6 @@ services:
       - MYSQL_ALLOW_EMPTY_PASSWORD
       - MYSQL_ROOT_PASSWORD=
 
-
 networks:
   mynetwork:
     driver: bridge
