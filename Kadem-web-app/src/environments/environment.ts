@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   //!!!!!!!!! default URL for fake-backend(json_server) test only !!!!!!!!!
-  defaultUrl: 'http://localhost:8089/kaddem',
+  defaultUrl: 'http://192.168.33.10:8089/kaddem',
   NodeJSUrl: 'http://localhost:3000'
 };
 
