@@ -39,16 +39,17 @@ pipeline {
                                 sh 'mvn test';
                            }
                         }
-                        post {
-                                always {
-                                  junit(testResults: 'target/surefire-reports/*.xml', allowEmptyResults : true)
-                                }
-                        }
+                        
         }
         stage('Jacoco Coverage Report') {
                        steps {
                              sh 'mvn clean test -Pmockito-tests'
                           }
+                          post {
+                                always {
+                                  junit(testResults: 'target/surefire-reports/*.xml', allowEmptyResults : true)
+                                }
+                        }
                         
 
         }
