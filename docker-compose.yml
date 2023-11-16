@@ -6,7 +6,7 @@ networks:
 services:
   mysqldb:
     container_name: mysqldb
-    image: "mysqldb:latest"
+    image: "mysql:latest"
     restart: unless-stopped
     ports:
       - 3306:3306
