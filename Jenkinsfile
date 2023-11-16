@@ -44,6 +44,10 @@ pipeline {
                        steps {
                              sh 'mvn clean test -Pmockito-tests'
                           }
+                            post {
+                    always {
+                      junit(testResults: 'target/surefire-reports/*.xml', allowEmptyResults : true)
+                    }
 
                   }
         stage('MVN DEPLOY TO NEXUS') {
