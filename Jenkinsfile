@@ -40,6 +40,12 @@ pipeline {
                            }
                         }
                 }
+        stage('Jacoco Coverage Report') {
+                       steps {
+                             sh 'mvn clean test -Pmockito-tests'
+                          }
+
+                  }
         stage('MVN DEPLOY TO NEXUS') {
             steps {
                 sh 'mvn deploy -Dmaven.test.skip=true'

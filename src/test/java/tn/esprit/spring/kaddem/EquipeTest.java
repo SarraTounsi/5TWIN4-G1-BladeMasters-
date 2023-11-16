@@ -1,5 +1,6 @@
 package tn.esprit.spring.kaddem;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
@@ -60,22 +61,39 @@ public class EquipeTest {
         assertThat(result.get(1).getNomEquipe()).isEqualTo("Junior Team");
         verify(equipeRepository, times(1)).findAll();
     }
+    @Test
+    void UpdateEquipeTest() {
+        Equipe EquipeToUpdate = new Equipe();
+        EquipeToUpdate.setIdEquipe(1);
+        EquipeToUpdate.setNomEquipe("Junior Team");
+        EquipeToUpdate.setNiveau(Niveau.JUNIOR);
+        when(equipeRepository.findById(EquipeToUpdate.getIdEquipe())).thenReturn(Optional.of(EquipeToUpdate));
+        when(equipeRepository.save(EquipeToUpdate)).thenReturn(EquipeToUpdate);
 
-//    @Test
-//    public void deleteProductTest() {
-//        Integer equipeIdToDelete = 1;
-//        doNothing().when(equipeRepository).deleteById(equipeIdToDelete);
-//        equipeService.deleteEquipe(equipeIdToDelete);
-//        verify(equipeRepository, times(1)).deleteById(equipeIdToDelete);
-//    }
+        Equipe updatedEquipe = equipeService.updateEquipe(EquipeToUpdate);
+
+        assertNotNull(updatedEquipe);
+        assertEquals("Junior Team", updatedEquipe.getNomEquipe());
+    }
+
+
+
+    @Test
+    public void deleteProductTest() {
+        int equipeIdToDelete = 1;
+        Equipe equipe = new Equipe(equipeIdToDelete, "Junior Team", Niveau.JUNIOR );
+        when(equipeRepository.findById(equipeIdToDelete)).thenReturn(Optional.of(equipe));
+        equipeService.deleteEquipe(equipeIdToDelete);
+        verify(equipeRepository, times(1)).delete(equipe);
+    }
     @Test
     public void retrieveProductTest() {
-        Integer equipeIdToRetrieve = 1;
-        Equipe expectedProduct = new Equipe(equipeIdToRetrieve, "Junior Team", Niveau.JUNIOR);
-        when(equipeRepository.findById(equipeIdToRetrieve)).thenReturn(Optional.of(expectedProduct));
+        int equipeIdToRetrieve = 1;
+        Equipe expectedEquipe = new Equipe(equipeIdToRetrieve, "Junior Team", Niveau.JUNIOR);
+        when(equipeRepository.findById(equipeIdToRetrieve)).thenReturn(Optional.of(expectedEquipe));
         Equipe result = equipeService.retrieveEquipe(equipeIdToRetrieve);
         verify(equipeRepository, times(1)).findById(equipeIdToRetrieve);
-        assertEquals(expectedProduct, result);
+        assertEquals(expectedEquipe, result);
     }
 
 
