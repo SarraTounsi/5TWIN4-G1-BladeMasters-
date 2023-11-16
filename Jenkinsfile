@@ -37,19 +37,19 @@ pipeline {
                             }
                     }
                 }
-                        stage('Mockito Tests') {
+            stage('Mockito Tests') {
                             steps {
                                 sh 'mvn clean test -Pmockito-tests'
                             }
-                            post {
-                                always {
+                     post {
+                          always {
                                     junit(
                                         allowEmptyResults: true,
                                         testResults: 'target/surefire-reports/**/*.xml'
                                     )
                                 }
                             }
-                        }
+           }
 
             stage('Deploy TO NEXUS') {
                             steps {
@@ -91,7 +91,7 @@ pipeline {
                     sh 'docker compose up -d'
                              }
                    }
-                   stage('Run grafana & prometheus') {
+            stage('Run grafana & prometheus') {
                                steps {
                                    sh 'sudo docker start prometheus'
                                    sh 'sudo docker start grafana'
