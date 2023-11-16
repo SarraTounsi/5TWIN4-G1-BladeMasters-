@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ba2ee145-a4c7-4dc1-b37a-082ed463c4e3" name="Changes" comment="add actuator dependency">
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    <list default="true" id="ba2ee145-a4c7-4dc1-b37a-082ed463c4e3" name="Changes" comment="add prometheus dependency">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,7 +106,16 @@
       <workItem from="1700085808072" duration="279000" />
       <workItem from="1700087816161" duration="742000" />
       <workItem from="1700088588073" duration="815000" />
+      <workItem from="1700091299178" duration="1316000" />
     </task>
+    <task id="LOCAL-00001" summary="add prometheus dependency">
+      <created>1700091861658</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1700091861658</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -125,6 +134,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add actuator dependency" />
-    <option name="LAST_COMMIT_MESSAGE" value="add actuator dependency" />
+    <MESSAGE value="add prometheus dependency" />
+    <option name="LAST_COMMIT_MESSAGE" value="add prometheus dependency" />
   </component>
 </project>
