@@ -25,7 +25,7 @@ pipeline {
                    sh 'mvn compile'      }
             }
         }
-        stage('MVN SONARQUBE') {
+        stage('SONARQUBE') {
                 steps {
                     script {
                         
@@ -33,24 +33,25 @@ pipeline {
                    }
                 }
         }
-        stage('testing') {
+        stage('testing junit') {
                         steps {
                             script {
                                 sh 'mvn test';
                            }
-                        }
+                             post {
+                                always {
+                                  junit(testResults: 'target/surefire-reports/*.xml', allowEmptyResults : true)
+                                }
+                           }
                 }
-        stage('Jacoco Coverage Report') {
+        stage('Jacoco') {
                        steps {
                              sh 'mvn clean test -Pmockito-tests'
                           }
-                            post {
-                    always {
-                      junit(testResults: 'target/surefire-reports/*.xml', allowEmptyResults : true)
-                    }
+                        
 
                   }
-        stage('MVN DEPLOY TO NEXUS') {
+        stage('NEXUS') {
             steps {
                 sh 'mvn deploy -Dmaven.test.skip=true'
             }
@@ -60,7 +61,7 @@ pipeline {
                 sh 'sudo docker build -t acilfarhat-5twin4-g1 .'
             }
         }  
-        stage('dockerhub') {
+        stage('Dockerhub') {
             steps {
 
                  sh "sudo docker login -u acilfarhat0909 -p acil28500"
@@ -89,7 +90,7 @@ pipeline {
             echo 'Build successful'
         }
         failure {
-            echo 'fail'
+            echo 'failure'
         }
     }
 }
