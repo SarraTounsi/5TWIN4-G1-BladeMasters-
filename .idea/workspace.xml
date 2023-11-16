@@ -6,6 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="ba2ee145-a4c7-4dc1-b37a-082ed463c4e3" name="Changes" comment="add prometheus dependency">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kaddem.iml" beforeDir="false" afterPath="$PROJECT_DIR$/kaddem.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/kaddem-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/kaddem-0.0.1-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/kaddem-0.0.1-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/target/kaddem-0.0.1-SNAPSHOT.jar.original" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-tn.esprit.spring.kaddem.EquipeTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-tn.esprit.spring.kaddem.EquipeTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/tn.esprit.spring.kaddem.EquipeTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/tn.esprit.spring.kaddem.EquipeTest.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,7 +112,8 @@
       <workItem from="1700085808072" duration="279000" />
       <workItem from="1700087816161" duration="742000" />
       <workItem from="1700088588073" duration="815000" />
-      <workItem from="1700091299178" duration="1316000" />
+      <workItem from="1700091299178" duration="2538000" />
+      <workItem from="1700123205071" duration="1879000" />
     </task>
     <task id="LOCAL-00001" summary="add prometheus dependency">
       <created>1700091861658</created>

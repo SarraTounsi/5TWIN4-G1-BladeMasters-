@@ -63,10 +63,11 @@ pipeline {
                 sh 'sudo docker compose up -d'
             }
         }  
-        stage('Grafana') {
+        stage('Grafana & prometheus') {
             steps {
                 script {
-                    sh 'docker start grafana'
+                    sh 'sudo docker start prometheus'
+                    sh 'sudo docker start grafana'
                 }
             }
         } 
