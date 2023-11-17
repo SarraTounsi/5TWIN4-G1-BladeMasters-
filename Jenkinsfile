@@ -57,7 +57,7 @@ pipeline {
         }
         stage('Docker Image') {
             steps {
-                sh 'docker build -t nourmakdouli-5twin4-g1 .'
+                sh 'sudo docker build -t nourmakdouli-5twin4-g1 .'
             }
         }
         stage('Push Docker Image') {
