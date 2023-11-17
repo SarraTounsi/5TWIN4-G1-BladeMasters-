@@ -30,14 +30,8 @@ pipeline {
                    }
                 }
         }
-            stage('JUnit tests') {
-                    steps {
-                        script {
-                            sh 'mvn clean test'
-                            }
-                    }
-                }
-            stage('Mockito Tests') {
+
+            stage('Unit Tests') {
                             steps {
                                 sh 'mvn clean test -Pmockito-tests'
                             }
@@ -101,5 +95,14 @@ pipeline {
 
 
 
+    }
+}
+ post {
+        success {
+            echo 'Build successful'
+        }
+        failure {
+            echo 'Build failed'
+        }
     }
 }
