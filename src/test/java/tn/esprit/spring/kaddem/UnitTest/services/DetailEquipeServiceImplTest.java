@@ -3,6 +3,7 @@ package tn.esprit.spring.kaddem.UnitTest.services;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -13,14 +14,11 @@ import org.mockito.MockitoAnnotations;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.mockito.Mockito;
-import tn.esprit.spring.kaddem.entities.DetailEquipe;
-import tn.esprit.spring.kaddem.repositories.DetailEquipeRepository;
-import tn.esprit.spring.kaddem.services.DetailEquipeServiceImpl;
-
-import javax.persistence.EntityNotFoundException;
+import tn.esprit.spring.kaddem.entities.DetailEquipe; // Import DetailEquipe class
+import tn.esprit.spring.kaddem.repositories.DetailEquipeRepository; // Import DetailEquipeRepository
+import tn.esprit.spring.kaddem.services.DetailEquipeServiceImpl; // Import DetailEquipeServiceImpl
 
 public class DetailEquipeServiceImplTest {
 
@@ -28,7 +26,7 @@ public class DetailEquipeServiceImplTest {
     private DetailEquipeServiceImpl detailEquipeService;
 
     @Mock
-    private DetailEquipeRepository detailEquipeRepository;
+    private DetailEquipeRepository detailEquipeRepository; // Change the repository to DetailEquipeRepository
 
     @BeforeEach
     void setUp() {
@@ -88,7 +86,7 @@ public class DetailEquipeServiceImplTest {
         DetailEquipe updatedDetailEquipe = new DetailEquipe(detailEquipeIdToUpdate, 456, "Updated Thematique");
 
         when(detailEquipeRepository.findById(detailEquipeIdToUpdate)).thenReturn(Optional.of(existingDetailEquipe));
-        when(detailEquipeRepository.save(updatedDetailEquipe)).thenReturn(updatedDetailEquipe);
+        when(detailEquipeRepository.save(eq(updatedDetailEquipe))).thenReturn(updatedDetailEquipe);
 
         DetailEquipe result = detailEquipeService.updateDetailEquipe(updatedDetailEquipe);
 
@@ -98,8 +96,9 @@ public class DetailEquipeServiceImplTest {
         assertThat(result.getThematique()).isEqualTo("Updated Thematique");
 
         verify(detailEquipeRepository, times(1)).findById(detailEquipeIdToUpdate);
-        verify(detailEquipeRepository, times(1)).save(updatedDetailEquipe);
+        verify(detailEquipeRepository, times(1)).save(eq(updatedDetailEquipe));
     }
 
 
 }
+
