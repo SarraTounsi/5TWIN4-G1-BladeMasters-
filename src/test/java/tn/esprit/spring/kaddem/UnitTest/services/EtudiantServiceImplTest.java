@@ -1,8 +1,10 @@
 package tn.esprit.spring.kaddem.UnitTest.services;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -70,6 +72,28 @@ import tn.esprit.spring.kaddem.services.EtudiantServiceImpl;
         Etudiant result = etudiantService.retrieveEtudiant(etudiantIdToRetrieve);
         verify(etudiantRepository, times(1)).findById(etudiantIdToRetrieve);
         assertEquals(expectedEtudiant, result);
+    }
+
+    
+    @Test
+    public void deleteStudentTest() {
+        int StudentId = 1;
+        Etudiant std = new  Etudiant(1,"Makdouli","Nour", Option.SIM);
+        when(etudiantRepository.findById(StudentId)).thenReturn(Optional.of(std));
+       etudiantService.removeEtudiant(StudentId);
+        verify(etudiantRepository, times(1)).delete(std);
+    }
+    @Test
+    void UpdateStudentTest() {
+        Etudiant etudiant= new  Etudiant("Ouni","Yoldez", Option.GAMIX);
+        etudiant.setPrenomE("mourad");
+        when(etudiantRepository.findById( etudiant.getIdEtudiant())).thenReturn(Optional.of( etudiant));
+        when(etudiantRepository.save( etudiant)).thenReturn( etudiant);
+
+        Etudiant updatedOp= etudiantService.updateEtudiant(etudiant);
+
+        Assertions.assertNotNull(updatedOp);
+        assertEquals("Yoldez", etudiant.getPrenomE());
     }
 
 
