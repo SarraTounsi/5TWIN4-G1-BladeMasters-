@@ -70,4 +70,11 @@ public class DetailEquipeServiceImplTest {
         verify(detailEquipeRepository, times(1)).findById(detailEquipeIdToRetrieve);
         assertEquals(expectedDetailEquipe, result);
     }
+    @Test
+    public void deleteDetailEquipeTest() {
+        Integer detailEquipeIdToDelete = 1;
+        doNothing().when(detailEquipeRepository).deleteById(detailEquipeIdToDelete);
+        detailEquipeService.removeDetailEquipe(detailEquipeIdToDelete);
+        verify(detailEquipeRepository, times(1)).deleteById(detailEquipeIdToDelete);
+    }
 }
