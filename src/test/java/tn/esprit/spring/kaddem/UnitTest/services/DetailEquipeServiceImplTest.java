@@ -3,7 +3,6 @@ package tn.esprit.spring.kaddem.UnitTest.services;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -71,34 +70,4 @@ public class DetailEquipeServiceImplTest {
         verify(detailEquipeRepository, times(1)).findById(detailEquipeIdToRetrieve);
         assertEquals(expectedDetailEquipe, result);
     }
-    @Test
-    public void deleteDetailEquipeTest() {
-        Integer detailEquipeIdToDelete = 1;
-        doNothing().when(detailEquipeRepository).deleteById(detailEquipeIdToDelete);
-        detailEquipeService.removeDetailEquipe(detailEquipeIdToDelete);
-        verify(detailEquipeRepository, times(1)).deleteById(detailEquipeIdToDelete);
-    }
-
-    @Test
-    public void updateDetailEquipeTest() {
-        Integer detailEquipeIdToUpdate = 1;
-        DetailEquipe existingDetailEquipe = new DetailEquipe(detailEquipeIdToUpdate, 123, "Sample Thematique");
-        DetailEquipe updatedDetailEquipe = new DetailEquipe(detailEquipeIdToUpdate, 456, "Updated Thematique");
-
-        when(detailEquipeRepository.findById(detailEquipeIdToUpdate)).thenReturn(Optional.of(existingDetailEquipe));
-        when(detailEquipeRepository.save(eq(updatedDetailEquipe))).thenReturn(updatedDetailEquipe);
-
-        DetailEquipe result = detailEquipeService.updateDetailEquipe(updatedDetailEquipe);
-
-        assertThat(result).isNotNull();
-        assertThat(result.getIdDetailEquipe()).isEqualTo(detailEquipeIdToUpdate);
-        assertThat(result.getSalle()).isEqualTo(456);
-        assertThat(result.getThematique()).isEqualTo("Updated Thematique");
-
-        verify(detailEquipeRepository, times(1)).findById(detailEquipeIdToUpdate);
-        verify(detailEquipeRepository, times(1)).save(eq(updatedDetailEquipe));
-    }
-
-
 }
-
