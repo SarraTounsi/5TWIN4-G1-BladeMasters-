@@ -72,6 +72,12 @@ pipeline {
                 sh 'sudo docker compose up -d --remove-orphans'
             }
         }
+                  stage('start grafana / prometheus') {
+                    steps {
+                        sh 'sudo docker start  a00c0638216f'
+                        sh 'sudo docker start  22010d1e5539'
+                    }
+                }
     }
 
     post {
