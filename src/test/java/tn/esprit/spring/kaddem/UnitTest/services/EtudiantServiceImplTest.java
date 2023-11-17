@@ -93,7 +93,7 @@ import tn.esprit.spring.kaddem.services.EtudiantServiceImpl;
         Etudiant updatedOp= etudiantService.updateEtudiant(etudiant);
 
         Assertions.assertNotNull(updatedOp);
-        assertEquals("Yoldez", etudiant.getPrenomE());
+        assertEquals("mourad", etudiant.getPrenomE());
     }
 
 
